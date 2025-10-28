@@ -1,6 +1,7 @@
 # Project Unison – Documentation Hub
 
 ## Overview
+
 Project Unison is an experimental computing platform that replaces traditional apps and interfaces with **real-time, context-aware generation**.  
 It runs as a modular system of services — *Orchestrator*, *Context*, *Storage*, *Policy*, and *I/O agents* — designed to create adaptive experiences for people through natural interaction, privacy-first architecture, and open interoperability.
 
@@ -32,7 +33,9 @@ This repository contains the living documentation for Unison’s design, behavio
 ---
 
 ## Contributing
+
 This documentation is open for contribution.  
+
 - Submit improvements via pull requests.  
 - Add new user journeys, diagrams, or examples that reflect emerging capabilities.  
 - Keep all text WCAG-compliant and accessible (use headings, alt text, and plain language).  
@@ -41,7 +44,9 @@ This documentation is open for contribution.
 ---
 
 ## Audience
+
 This repository is intended for:  
+
 - **Developers** building or extending Unison modules.  
 - **Designers and UX researchers** defining adaptive interaction models.  
 - **Accessibility and policy specialists** ensuring inclusive design.  
@@ -50,5 +55,6 @@ This repository is intended for:
 ---
 
 ## License and Attribution
+
 All documentation content is licensed under Creative Commons Attribution-ShareAlike 4.0 (CC-BY-SA-4.0).  
 Please reference *Project Unison (project-unisonOS)* when citing or reusing materials.

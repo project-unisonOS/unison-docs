@@ -1,0 +1,40 @@
+name: Docs Lint
+
+on:
+  pull_request:
+    paths:
+      - 'unison-docs/**/*.md'
+      - '.markdownlint.json'
+      - '.remarkrc.mjs'
+      - 'package.json'
+  push:
+    branches: [ main ]
+    paths:
+      - 'unison-docs/**/*.md'
+      - '.markdownlint.json'
+      - '.remarkrc.mjs'
+      - 'package.json'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps
+        run: |
+          npm ci || npm install
+
+      - name: Run markdownlint
+        run: |
+          npx markdownlint-cli2 "unison-docs/**/*.md"
+
+      - name: Run remark
+        run: |
+          npx remark unison-docs --ext .md

@@ -1,6 +1,7 @@
 # User Journey 04 – Onboarding and Self-Awareness: “First-Time Startup Experience”
 
 ## Scenario Summary
+
 A person powers on a device running Unison for the first time.  
 Within seconds, Unison greets them using clear audio, subtle LED patterns, and on-screen text in the person’s preferred language.  
 It detects available input/output components, confirms what it can currently do, and invites the person to personalize preferences — all without forms or menus.

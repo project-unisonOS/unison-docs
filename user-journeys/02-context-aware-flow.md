@@ -1,6 +1,7 @@
 # User Journey 02 – Context-Aware Flow: “Send that summary to my project team”
 
 ## Scenario Summary
+
 After generating a document summary, a person tells Unison:  
 > “Send that summary to my project team.”  
 

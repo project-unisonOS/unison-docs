@@ -291,6 +291,7 @@ def handle_event(envelope: dict):
 This keeps validation logic centralized and prevents drift.
 
 ### 6.2 Logging
+
 All envelopes should be logged by Orchestrator with:
 
 - `timestamp`
@@ -300,6 +301,7 @@ All envelopes should be logged by Orchestrator with:
 Payloads that include sensitive data may be redacted or summarized in logs. The redaction policy will live in the Policy service once it exists as its own repo.
 
 ### 6.3 Policy integration
+
 Before performing anything with side effects (network transmission, hardware control, external calls), the orchestrator must:
 
 - Create a `policy.evaluate` envelope  

@@ -1,6 +1,7 @@
 # User Journey 01 – Basic Request: “Summarize this document for me”
 
 ## Scenario Summary
+
 A person wants a concise summary of a document they are viewing. They simply ask Unison, “Summarize this document for me.”  
 Unison understands context, retrieves the content through the appropriate input channel, generates the summary, and delivers it in the person’s preferred format—spoken, visual, or both.
 

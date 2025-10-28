@@ -1,6 +1,7 @@
 # User Journey 03 – Policy Block Example: “Send this confidential file to my personal email”
 
 ## Scenario Summary
+
 A person working on a company-managed device says:  
 > “Send this confidential file to my personal email.”  
 

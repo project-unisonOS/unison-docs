@@ -1,6 +1,7 @@
 # Project Unison – Vision
 
 ## Overview
+
 Unison represents a fundamental shift in how people interact with technology.  
 Instead of navigating applications, screens, and interfaces, people engage in natural exchanges where intent, context, and personalization guide the experience.  
 Unison generates all experiences in real time — adapting to each person, situation, and environment — without the artificial friction of app boundaries.
@@ -8,6 +9,7 @@ Unison generates all experiences in real time — adapting to each person, situa
 ---
 
 ## Completing the Evolution of Abstraction
+
 Computing began with direct manipulation of binary code, requiring humans to think like machines.  
 Over time, layers of abstraction — assembly languages, operating systems, graphical interfaces, and now conversational systems — have progressively closed the gap between human intention and computational execution.  
 Unison completes this journey. It establishes the first true **end-to-end natural computing model**, where interaction is conversational, multimodal, and contextual rather than procedural.  
@@ -16,6 +18,7 @@ A person no longer learns how to use a system; the system learns how to collabor
 ---
 
 ## Purpose and Philosophy
+
 Unison is built on two principles:
 
 1. **Computing as collaboration**  
@@ -30,6 +33,7 @@ Unison is built on two principles:
 ---
 
 ## Vision for Human–System Symmetry
+
 Unison transforms technology from a set of discrete tools into a unified ecosystem of intelligent collaborators.  
 It understands sensory input, memory, and policy holistically — generating adaptive responses that respect privacy, context, and consent.  
 Every experience, from creation to consumption, becomes frictionless and personalized.
