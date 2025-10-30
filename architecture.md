@@ -2,13 +2,17 @@
 
 ## Overview
 
-Project Unison is structured as a **modular, service‑oriented computing platform** designed for real‑time generation and orchestration of user experiences.  
-Each subsystem is independently containerized, communicating through defined interfaces to ensure scalability, security, and future extensibility.
+Project Unison is structured as a **modular, service‑oriented computing platform** designed for real‑time generation
+and orchestration of user experiences.  
+Each subsystem is independently containerized, communicating through defined interfaces to ensure scalability,
+security, and future extensibility.
 
 ![Project Unison System Diagram](architecture.png)
-*Alt text: Grayscale architecture diagram showing user input and output modules (speech, vision, keyboard, sensors) connected to the core Unison services layer (orchestrator, context, storage, policy).
-Below the core layer, the diagram depicts external APIs and inference engines including cloud LLMs, local AI accelerators, and payment gateways.
-Arrows indicate bidirectional data flow using standardized EventEnvelope messages.*
+*Alt text: Grayscale architecture diagram showing user input and output modules (speech, vision, keyboard, sensors)
+connected to the core Unison services layer (orchestrator, context, storage, policy).
+Below the core layer, the diagram depicts external APIs and inference engines including cloud LLMs, local AI
+accelerators, and payment gateways. Arrows indicate bidirectional data flow using standardized EventEnvelope
+messages.*
 
 ## Architectural Layers
 
@@ -28,9 +32,9 @@ These services form the runtime core that generates and mediates user experience
 | Service | Function |
 |----------|-----------|
 | **Orchestrator** | Central coordination engine. Routes EventEnvelope requests, manages lifecycle, and enforces readiness of all subsystems. |
-| **Context** | Maintains short‑term and long‑term memory for each user, providing personalization and continuity across sessions. |
+| **Context** | Maintains short‑term and long‑term memory for each user, providing personalization and continuity across sessions. <br>See [dev/specs/CONTEXT.md](dev/specs/CONTEXT.md). |
 | **Storage** | Handles persistent data and encrypted local partitions. Supports long‑term memory, cache, and structured logging. |
-| **Policy** | Applies safety, consent, and compliance checks before any high‑impact action. Produces allow/deny/confirm responses. |
+| **Policy** | Applies safety, consent, and compliance checks before any high‑impact action. Produces allow/deny/confirm responses. <br>See [dev/specs/POLICY.md](dev/specs/POLICY.md). |
 
 ### 3. External Services & Inference Layer
 
@@ -41,7 +45,9 @@ These services form the runtime core that generates and mediates user experience
 ## Data Flow – The EventEnvelope Model
 
 All components communicate through standardized **EventEnvelope** objects defined in `unison-spec`.  
+See the spec at [dev/specs/EVENT-ENVELOPE.md](dev/specs/EVENT-ENVELOPE.md).
 An EventEnvelope includes:  
+
 - `timestamp` – ISO 8601 time the event occurred  
 - `source` – which module or agent emitted the event  
 - `intent` – desired action or outcome  
@@ -67,7 +73,9 @@ An EventEnvelope includes:
 
 **Self-Introspection:**
 
-Every Unison instance maintains a registry of its I/O capabilities, connected components, and available inference engines. This allows the system to explain its own configuration conversationally and assist people in extending or troubleshooting it.
+Every Unison instance maintains a registry of its I/O capabilities, connected components, and available inference
+engines. This allows the system to explain its own configuration conversationally and assist people in extending or
+troubleshooting it.
 
 ## API Endpoints (current)
 
@@ -75,8 +83,9 @@ These are the minimal endpoints available in the devstack implementation.
 
 - **Orchestrator** (`:8080`)
   - `GET /health` — liveness probe
-  - `GET /ready` — readiness probe; checks `context:/health`, `storage:/health`, and performs a policy evaluation for a test capability
-  - `POST /event` — accepts an EventEnvelope per the spec in `dev/specs/EVENT-ENVELOPE.md`.
+  - `GET /ready` — readiness probe; checks `context:/health`, `storage:/health`, and performs a policy evaluation for
+    a test capability
+  - `POST /event` — accepts an EventEnvelope per the spec in [dev/specs/EVENT-ENVELOPE.md](dev/specs/EVENT-ENVELOPE.md).
     - Validates required fields and rejects unknown top-level fields
     - Calls `policy:/evaluate` using `intent` as `capability_id`
     - If allowed, returns an accepted response (stub routing for now)
@@ -97,13 +106,17 @@ These are the minimal endpoints available in the devstack implementation.
 
 See the EventEnvelope spec for request structure and validation details.
 
+For a hands-on guide to running the devstack and shell, see [dev/DEV-MODE-QUICKSTART.md](dev/DEV-MODE-QUICKSTART.md).
+
 ### Correlation and Logging
 
 - All inter-service requests include a correlation header `X-Event-ID` generated by the Orchestrator.
-- The Orchestrator also returns `event_id` in JSON responses for `/ready` and `/event` so logs across services can be correlated.
+- The Orchestrator also returns `event_id` in JSON responses for `/ready` and `/event` so logs across services can be
+  correlated.
 - All core services write structured JSON logs containing `service`, `message`, `ts`, and relevant fields (including `event_id` when available).
 
 ## Summary
 
 Project Unison provides the architectural foundation for context‑aware, generative computing.  
-By combining modular orchestration, policy‑gated trust, and standardized event flow, it enables devices to generate personalized experiences on demand—securely, privately, and in real time.
+By combining modular orchestration, policy‑gated trust, and standardized event flow, it enables devices to generate
+personalized experiences on demand—securely, privately, and in real time.
