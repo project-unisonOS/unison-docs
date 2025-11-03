@@ -2,11 +2,11 @@
 
 ## Overview
 
-Unison represents a fundamental shift in how people interact with technology.  
-Instead of navigating applications, screens, and interfaces, people engage in natural exchanges where intent,
+Unison represents a fundamental shift in how people interact with computing itself.  
+Instead of navigating traditional software interfaces and constrained workflows, people engage in natural exchanges where intent,
 context, and personalization guide the experience.  
 Unison generates all experiences in real time — adapting to each person, situation, and environment — without the
-artificial friction of app boundaries.
+artificial friction of conventional software boundaries.
 
 ---
 

@@ -2,9 +2,19 @@
 
 ## Overview
 
-Project Unison is an experimental computing platform that replaces traditional apps and interfaces with **real-time, context-aware generation**. It runs as a modular system of services — *Orchestrator*, *Context*, *Storage*, *Policy*, and *I/O agents* — designed to create adaptive experiences for people through natural interaction, privacy-first architecture, and open interoperability.
+Project Unison is an **enterprise-grade intent orchestration platform** that replaces traditional software interfaces with **real-time, context-aware experience generation**. 
 
-This repository contains the living documentation for Unison's design, behavior, and vision.
+The Unison Platform transforms 15+ distributed microservices into a **unified, cohesive system** while maintaining development autonomy. It provides **one-command setup**, **universal CI/CD**, and **enterprise-grade security** through a centralized platform spine.
+
+**Key Platform Features:**
+- 🚀 **One-Command Setup**: `make up` starts the entire platform
+- 🔧 **Universal CI/CD**: Reusable workflows with security & compliance
+- 📋 **Hard Interfaces**: Enforced contracts via unison-spec
+- 🔒 **Enterprise Security**: SLSA compliance, SBOM, provenance
+- 📊 **Full Observability**: Distributed tracing, metrics, logging
+- 🏗️ **Domain Organization**: Core, I/O, Skills+Inference, Infrastructure
+
+This repository contains the living documentation for Unison's platform design, development, and operations.
 
 ---
 
@@ -21,15 +31,17 @@ This repository contains the living documentation for Unison's design, behavior,
 | [**Troubleshooting**](people/troubleshooting.md) | Common issues and solutions |
 
 ### 🛠️ Developer Documentation
-**For developers building on Unison**
+**For developers building on the Unison Platform**
 
 | Section | Description |
 |----------|-------------|
-| [**Getting Started**](developer/getting-started.md) | Development setup and environment |
-| [**Architecture**](developer/architecture.md) | System design and component relationships |
-| [**API Reference**](developer/api-reference/README.md) | Complete API documentation for all services |
-| [**Deployment**](developer/deployment/README.md) | Development and production deployment guides |
-| [**Contributing**](developer/contributing.md) | Development guidelines and contribution process |
+| [**Getting Started**](developer/getting-started.md) | 🚀 One-command platform setup and verification |
+| [**Platform Overview**](developer/platform-overview.md) | 🏗️ Platform architecture and domain organization |
+| [**Development Workflow**](developer/development-workflow.md) | 🔧 Platform development process and tools |
+| [**API Reference**](developer/api-reference/README.md) | 📋 Complete API documentation with contracts |
+| [**Deployment Guide**](developer/deployment/README.md) | 🚀 Development and production deployment |
+| [**Migration Guide**](developer/migration-guide.md) | 🔄 Moving from individual services to platform |
+| [**Contributing**](developer/contributing.md) | 🤝 Platform development contribution process |
 
 ### 🔧 Operations Documentation
 **For system administrators and operators**
@@ -50,6 +62,35 @@ This repository contains the living documentation for Unison's design, behavior,
 | [**Event Envelope**](../unison-spec/specs/event-envelope.md) | Standard message format for system communication |
 | [**Security Requirements**](../unison-spec/specs/security-requirements.md) | Security specifications and compliance requirements |
 | [**Version Compatibility**](../unison-spec/specs/version-compatibility.md) | Version matrix and compatibility information |
+
+---
+
+## 🚀 Platform Quick Start
+
+**Start the entire Unison Platform with one command:**
+
+```bash
+# Clone the platform repository
+git clone https://github.com/project-unisonos/unison-platform.git
+cd unison-platform
+
+# Configure and start everything
+cp .env.template .env
+make up
+
+# Verify all services are healthy
+make health
+```
+
+**🎉 That's it! 15+ services are now running with:**
+- ✅ Intent orchestration and processing
+- ✅ Context management and fusion  
+- ✅ Experience generation and rendering
+- ✅ I/O services (speech, vision, core)
+- ✅ Inference and skills capabilities
+- ✅ Full observability and monitoring
+
+**Learn more:** [Developer Getting Started](developer/getting-started.md)
 
 ---
 

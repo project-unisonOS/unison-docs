@@ -1,18 +1,20 @@
 # People Guide
 
-Welcome to the comprehensive guide for using Unison, the adaptive computing platform that transforms how you interact with technology through natural conversation and context-aware assistance.
+Welcome to the comprehensive guide for using Unison, a real-time intent orchestration environment that transforms how you interact with computing itself. Unison synthesizes outcomes from your natural expressions of intent, generating adaptive experiences that bridge your goals with computational capabilities.
 
 ## Table of Contents
 
 1. [Getting Started](#getting-started)
-2. [Basic Concepts](#basic-concepts)
-3. [Everyday Interactions](#everyday-interactions)
-4. [Personalization and Preferences](#personalization-and-preferences)
-5. [Privacy and Security](#privacy-and-security)
-6. [Advanced Features](#advanced-features)
-7. [Accessibility](#accessibility)
-8. [Troubleshooting](#troubleshooting)
-9. [Tips and Best Practices](#tips-and-best-practices)
+2. [Intent-Based Interaction](#intent-based-interaction)
+3. [Intent and Context Graphs](#intent-and-context-graphs)
+4. [Experience Generation](#experience-generation)
+5. [Unified Communication](#unified-communication)
+6. [Personalization and Preferences](#personalization-and-preferences)
+7. [Privacy and Security](#privacy-and-security)
+8. [Advanced Capabilities](#advanced-capabilities)
+9. [Accessibility](#accessibility)
+10. [Troubleshooting](#troubleshooting)
+11. [Tips and Best Practices](#tips-and-best-practices)
 
 ## Getting Started
 
@@ -30,100 +32,213 @@ When you first start using Unison, the system will:
 ```
 You: "Hello, I'm new here. What can you help me with?"
 
-Unison: "Welcome! I'm Unison, your adaptive computing assistant. 
-I can help you with:
-- Writing and editing documents
-- Managing your schedule and tasks
-- Answering questions and research
-- Controlling smart home devices
-- And much more through natural conversation
+Unison: "Welcome! I'm Unison, your computing fabric for intent orchestration. 
+I help you achieve outcomes through natural expression of goals:
+- Synthesize insights from your information landscape
+- Orchestrate your daily priorities and commitments  
+- Generate adaptive experiences for your needs
+- Coordinate communication across your networks
+- Bridge your intentions with computational capabilities
 
-To get started, would you like to:
-1. Set up your preferences
-2. Try a simple task
-3. Learn about what I can do
-4. Just start talking and I'll adapt as we go"
+To begin, would you like to:
+1. Express a current goal or intention
+2. Explore what's possible with intent orchestration
+3. Set up your preference profile
+4. Simply start expressing your needs naturally"
 ```
 
-## Basic Concepts
+## Intent-Based Interaction
 
-### Natural Interaction
+### Natural Intent Expression
 
-Unison understands natural language without requiring specific commands:
+Unison understands your natural expressions of intent without requiring specific commands or application navigation:
 
-- **Instead of**: "Hey Unison, set a timer for 10 minutes"
-- **You can say**: "Set a timer for 10 minutes" or "I need a 10-minute timer"
+- **Instead of**: "Open the budget document and show me the summary"
+- **You can say**: "Show me the current budget status" or "What's our financial position?"
 
-### Context Awareness
+- **Instead of**: "Create a new email to Sarah about the meeting"
+- **You can say**: "Coordinate with Sarah about tomorrow's meeting" or "Ensure Sarah knows the meeting details"
 
-Unison remembers and uses context from:
-- **Current conversation**: What you're discussing
-- **Active applications**: Documents or programs you're using
-- **Time and location**: When and where you are
-- **Your preferences**: How you like to work
-- **Previous interactions**: Your history and patterns
+### Outcome Synthesis
 
-### Adaptive Responses
+Unison generates outcomes rather than managing files:
+- **Artifacts are transient**: Documents, messages, and reports are generated as needed
+- **Focus on results**: Express what you want to achieve, not how to navigate to it
+- **Context-aware generation**: Outcomes adapt to your current situation and needs
 
-Unison adapts to:
-- **Your communication style**: Formal or casual, detailed or brief
-- **Your skill level**: Beginner or advanced explanations
-- **Your current needs**: Quick answers or detailed guidance
-- **Your environment**: Quiet office or busy home
+### Computing Fabric Paradigm
 
-## Everyday Interactions
+Unison acts as the UX layer over computing itself:
+- **Intent-driven**: Your goals drive all computational actions
+- **Application-agnostic**: No need to think about which app to use
+- **Seamless orchestration**: Computing resources coordinate behind the scenes
+- **Adaptive interfaces**: Each moment generates the optimal interface for your needs
 
-### Productivity Tasks
+## Intent and Context Graphs
 
-#### Document Management
+### Intent Graph: Your Goal Architecture
+
+The Intent Graph formalizes how your goals are structured and executed:
+
 ```
-You: "I need to summarize this meeting transcript"
+You: "Prepare my team for the client presentation tomorrow"
 
-Unison: "I can see you have the transcript open. I'll create a summary 
-highlighting the key decisions, action items, and next steps. 
-Would you like it in bullet points or a paragraph format?"
-```
-
-#### Task Management
-```
-You: "Remind me to call Sarah tomorrow at 2pm"
-
-Unison: "I'll set a reminder for tomorrow at 2pm to call Sarah. 
-Should I also look up her contact information and prepare any notes 
-from your last conversation?"
+Intent Graph Breakdown:
+Primary Goal: Prepare team for client presentation
+├── Sub-goal: Synthesize key talking points
+├── Sub-goal: Create practice scenarios  
+├── Sub-goal: Coordinate team availability
+├── Sub-goal: Generate supporting materials
+└── Priority: High (deadline tomorrow)
 ```
 
-### Learning and Research
+**How it works**:
+- **Goal Decomposition**: Breaks complex intentions into actionable sub-goals
+- **Dependency Resolution**: Identifies what needs to happen first
+- **Priority Ranking**: Orders goals based on urgency and importance
+- **Temporal Planning**: Schedules goals across your available time
 
-#### Information Gathering
+### Context Graph: Your Environmental Intelligence
+
+The Context Graph fuses multi-dimensional data to decide when and how to act:
+
 ```
-You: "What's the difference between machine learning and AI?"
-
-Unison: "Machine learning is a subset of AI. While AI is the broad concept 
-of machines performing intelligent tasks, machine learning specifically 
-refers to systems that learn from data without being explicitly programmed. 
-
-Would you like me to:
-- Explain this with examples
-- Show you current applications
-- Find learning resources
-- Discuss career opportunities in this field?"
+Current Context Fusion:
+├── Sensory Data: Office environment, computer active, calendar open
+├── Temporal Context: Thursday 2pm, 1 hour until next meeting
+├── Preference Data: You prefer visual summaries, work best in mornings
+├── Historical Patterns: Usually review presentations 24 hours in advance
+└── Environmental Factors: Team is online, client materials ready
 ```
 
-### Personal Assistance
+**Contextual Decision Making**:
+- **Timing Optimization**: Chooses the best moment to execute each goal
+- **Modality Selection**: Picks the optimal presentation format
+- **Resource Coordination**: Aligns with available people and tools
+- **Adaptive Scheduling**: Adjusts based on changing conditions
 
-#### Daily Planning
+### Real-Time Adaptation
+
+The graphs continuously update based on:
+- **Your Feedback**: "Actually, focus on the financial projections first"
+- **Environmental Changes**: "The client just sent updated requirements"
+- **Priority Shifts**: "The marketing team needs this review by 4pm"
+- **New Information**: "I just remembered we need to include the Q3 results"
+
+## Experience Generation
+
+### Adaptive Interface Synthesis
+
+Unison generates the optimal interface for each moment:
+
 ```
-You: "What's on my schedule today?"
+Intent: "Show me the current budget status"
 
-Unison: "You have three meetings today:
-- 9am: Team standup
-- 1pm: Project review with marketing
-- 3pm: Client call
-
-I noticed you have a project deadline Friday. Would you like me to 
-block some focus time tomorrow to prepare?"
+Generated Experience:
+- Primary View: Interactive budget dashboard with key metrics
+- Secondary: Detailed breakdown by department
+- Actions: Export options, comparison tools, forecast scenarios
+- Modality: Visual charts with voice explanation available
 ```
+
+### Multi-Modal Presentation
+
+Your intent determines how information is presented:
+
+- **Visual Intent**: "Show me" → Rich dashboards, charts, diagrams
+- **Analytical Intent**: "Analyze" → Detailed breakdowns with insights  
+- **Communication Intent**: "Explain to the team" → Prepared summaries and talking points
+- **Decision Intent**: "Should we" → Pros/cons analysis and recommendations
+
+### Real-Time Generation Flow
+
+```
+Intent Expression
+       ↓
+Context Graph Analysis
+       ↓  
+Intent Graph Decomposition
+       ↓
+Resource Coordination
+       ↓
+Experience Rendering
+       ↓
+Adaptive Presentation
+       ↓
+Feedback Integration
+```
+
+## Unified Communication
+
+### Unified Messaging Protocol (UMP)
+
+Unison revolutionizes communication by focusing on intent rather than channels:
+
+```
+You: "Coordinate with the team about the project deadline"
+
+UMP Resolution:
+Intent Analysis: Coordinate team communication about deadline
+├── Recipients: Project team (5 people)
+├── Context: Upcoming deadline, need alignment
+├── Delivery Strategy: 
+│   ├── Sarah (mobile): Push notification with summary
+│   ├── Mike (desktop): Workspace message with details
+│   ├── Team (shared): Project update with action items
+│   └── Follow-up: Automatic reminder 24 hours before
+└── Confirmation: Real-time delivery status and acknowledgments
+```
+
+### Intent-Driven Communication
+
+Express what you want to achieve, not how to send it:
+
+- **Instead of**: "Send an email to the team with the project status"
+- **Say**: "Ensure the team knows the current project status"
+
+- **Instead of**: "Create a group chat for the marketing campaign"  
+- **Say**: "Coordinate the marketing team efforts"
+
+- **Instead of**: "Schedule a meeting with Sarah to review the budget"
+- **Say**: "Align with Sarah on the budget review"
+
+### Dynamic Channel Selection
+
+UMP chooses the optimal delivery method based on:
+
+- **Recipient Context**: Current location, device availability, attention state
+- **Message Urgency**: Immediate notification vs. batch delivery
+- **Communication Preferences**: How each person likes to receive information
+- **Consent Settings**: Privacy and contact preferences
+
+### Delivery Confirmation
+
+You see confirmation of intent fulfillment, not traditional inbox management:
+
+```
+Communication Status:
+✅ Sarah received and acknowledged (2 minutes ago)
+✅ Mike reviewed the details (5 minutes ago)  
+✅ Team workspace updated (8 minutes ago)
+⏳ Awaiting response from Alex (sent 1 hour ago)
+🔄 Auto-follow-up scheduled if no response by 4pm
+```
+
+### Transport Abstraction
+
+UMP seamlessly handles different communication standards:
+- **Modern Protocols**: Matrix, ActivityPub, WebSocket
+- **Traditional Systems**: Email (SMTP), SMS, voice calls
+- **Enterprise Platforms**: Slack, Teams, workplace systems
+- **Future Standards**: Automatically integrates new protocols
+
+### Privacy and Consent
+
+Every communication respects:
+- **Consent Preferences**: Who can contact you and how
+- **Context Awareness**: Work vs. personal communication separation
+- **Time Boundaries**: Respect for working hours and attention state
+- **Revocable Access**: Ability to withdraw consent at any time
 
 ## Personalization and Preferences
 
@@ -138,22 +253,34 @@ for more detail if you need it. Would you like me to remember this
 preference for all our conversations?"
 ```
 
-#### Work Patterns
+#### Intent Expression Patterns
 ```
 You: "I work best in the morning"
 
 Unison: "I've noted your peak productivity hours are mornings. 
-I'll suggest important tasks for the morning and save routine items 
-for afternoon when possible. Should I also adjust your meeting preferences?"
+I'll suggest important goal orchestration for the morning and save routine 
+items for afternoon when possible. Should I also adjust your communication 
+preferences for different times of day?"
 ```
 
-### Learning Your Patterns
+#### Experience Modality Preferences
+```
+You: "I prefer visual summaries with key insights"
 
-Over time, Unison learns:
-- **When you work**: Your productive hours and break patterns
-- **How you work**: Your preferred methods and tools
-- **What you need**: Anticipating your requirements
-- **How you communicate**: Your language and response preferences
+Unison: "I'll generate visual-first experiences with charts and dashboards 
+when you express analytical intent. I'll provide text summaries as 
+secondary options. Would you like me to adjust this based on the type 
+of information or your current context?"
+```
+
+### Learning Your Intent Patterns
+
+Over time, Unison learns your unique patterns:
+- **Intent Expression**: How you naturally express goals and needs
+- **Temporal Patterns**: When you prefer different types of orchestration
+- **Contextual Preferences**: How your environment affects your needs
+- **Outcome Preferences**: What kinds of synthesized results work best for you
+- **Communication Evolution**: How your intent expression changes with context
 
 ## Privacy and Security
 

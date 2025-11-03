@@ -2,51 +2,75 @@
 
 ## Overview
 
-Project Unison is structured as a **modular, service‑oriented computing platform** designed for real‑time generation and orchestration of user experiences. Each subsystem is independently containerized, communicating through defined interfaces to ensure scalability, security, and future extensibility.
+Project Unison is structured as a **real-time intent orchestration environment** that synthesizes adaptive experiences from natural expressions of user intent. The system generates computational outcomes through intent graphs, context graphs, and experience rendering engines, acting as a computing fabric that bridges human goals with digital capabilities. Each subsystem is independently containerized, communicating through defined interfaces to ensure scalability, security, and future extensibility.
 
 ![Project Unison System Diagram](../assets/architecture-diagram.png)
-*Alt text: Grayscale architecture diagram showing user input and output modules (speech, vision, keyboard, sensors) connected to the core Unison services layer (orchestrator, context, storage, policy). Below the core layer, the diagram depicts external APIs and inference engines including cloud LLMs, local AI accelerators, and payment gateways. Arrows indicate bidirectional data flow using standardized EventEnvelope messages.*
+*Alt text: Grayscale architecture diagram showing intent capture modules (speech, vision, keyboard, sensors) connected to the core Unison orchestration layer (intent graphs, context graphs, experience rendering). Below the core layer, the diagram depicts generation providers including skills, inference engines, and virtual display interfaces. Arrows indicate bidirectional intent flow using standardized EventEnvelope messages.*
 
 ## Architectural Layers
 
-### 1. Input / Output Layer
+### 1. Intent Capture Layer
 
-**Purpose:** Capture and render multimodal interaction.
+**Purpose:** Capture natural expressions of intent and render adaptive experiences.
 
 **Components:**
-- **Speech I/O:** Voice recognition, text‑to‑speech, conversation
-- **Vision I/O:** Image capture, object recognition, scene description
-- **Haptic and Sensor I/O:** Gesture detection, environmental sensors, mobility interfaces
-- **Keyboard / Assistive Devices:** Fallback and accessibility interaction paths
+- **Speech Intent:** Voice recognition, intent extraction, conversational synthesis
+- **Vision Intent:** Image analysis, scene understanding, visual intent recognition
+- **Haptic and Sensor Intent:** Gesture intent, environmental context, mobility interfaces
+- **Text Intent:** Keyboard input, chat interfaces, assistive device integration
+- **Experience Rendering:** Multi-modal output synthesis, adaptive interface generation
 
-### 2. Core Services Layer
+### 2. Core Orchestration Layer
 
-These services form the runtime core that generates and mediates user experiences.
+These services form the intent orchestration core that synthesizes adaptive experiences.
+
+#### Intent Graph Service
+Formalizes and manages user goal decomposition and execution:
+- **Goal Decomposition**: Breaks complex intents into actionable sub-goals
+- **Dependency Resolution**: Identifies and manages goal interdependencies
+- **Priority Ranking**: Orders goals based on urgency, importance, and context
+- **Temporal Planning**: Schedules goals across available time and resources
+- **Execution Tracking**: Monitors goal progress and completion status
+
+#### Context Graph Service
+Fuses multi-dimensional context for intelligent decision making:
+- **Sensory Fusion**: Integrates environmental, temporal, and device context
+- **Preference Modeling**: Maintains and updates user preference models
+- **Environmental Awareness**: Tracks location, time, activity, and social context
+- **Historical Patterns**: Learns from past interactions and outcomes
+- **Real-time Adaptation**: Continuously updates context based on new information
+
+#### Experience Rendering Engine
+Generates adaptive interfaces and experiences in real-time:
+- **Interface Synthesis**: Creates optimal interfaces for each intent and context
+- **Modality Selection**: Chooses best presentation format (visual, audio, text)
+- **Interaction Generation**: Synthesizes appropriate interaction patterns
+- **Real-time Adaptation**: Adjusts experience based on user feedback and context
+- **Multi-modal Output**: Coordinates multiple output channels simultaneously
 
 #### unison-orchestrator
-The central decision layer that coordinates all system activities:
-- Accepts user intent from I/O modules
-- Queries context for user state and preferences
-- Routes work to appropriate skills and generation providers
-- Enforces policy for safety, consent, and authorization
-- Coordinates responses through I/O modules
-- Provides authentication and authorization middleware
+The central coordination layer that orchestrates the entire intent lifecycle:
+- **Intent Reception**: Receives and validates natural intent expressions
+- **Graph Coordination**: Manages interaction between intent and context graphs
+- **Resource Orchestration**: Coordinates skills, inference, and external resources
+- **Policy Enforcement**: Ensures safety, consent, and authorization compliance
+- **Experience Coordination**: Manages experience rendering and delivery
 
 #### unison-context
 Manages user state, preferences, and environmental awareness:
-- Short-term session memory and context
-- Long-term user preferences and history
-- Environmental signals and device state
-- Query and subscription API for real-time updates
-- Privacy-first data handling with user consent
+- **Context Storage**: Maintains current and historical context data
+- **Preference Management**: Stores and retrieves user preferences and patterns
+- **Privacy Controls**: Enforces consent-based data handling
+- **Query Interface**: Provides real-time context access to other services
+- **Environmental Integration**: Integrates external context sources
 
 #### unison-storage
-Provides secure, partitioned data persistence:
-- Working memory for active sessions
-- Long-term memory with encryption
-- Secure vault for sensitive data
-- File storage with access controls
-- Backup and recovery capabilities
+Provides secure, partitioned data persistence for the orchestration environment:
+- **Intent History**: Stores intent expressions and outcomes for learning
+- **Context Archives**: Maintains historical context for pattern analysis
+- **Secure Vault**: Encrypts sensitive personal and preference data
+- **Artifact Storage**: Manages transient artifacts generated by experiences
+- **Backup and Recovery**: Ensures data persistence and system resilience
 
 #### unison-policy
 Enforces safety, privacy, and business rules:
@@ -64,89 +88,123 @@ Handles authentication and authorization:
 - Token management and revocation
 - User management and identity
 
-### 3. Skills and Generation Layer
+### 3. Generation and Skills Layer
 
 #### unison-skills
-Deterministic capability modules that perform specific tasks:
-- Context-aware data processing
-- External API integrations
-- Business logic execution
-- Workflow orchestration
-- Custom skill development framework
+Deterministic capability modules that execute specific intent-driven tasks:
+- **Intent Processing**: Transforms intent graphs into executable actions
+- **External API Integration**: Connects with external services and data sources
+- **Business Logic Execution**: Implements domain-specific capabilities
+- **Workflow Orchestration**: Coordinates multi-step intent execution
+- **Custom Skill Framework**: Enables development of new intent capabilities
 
 #### unison-inference
-AI/ML generation services:
-- Text generation and completion
-- Image analysis and generation
-- Audio processing and synthesis
-- Multi-modal reasoning
-- Provider abstraction (OpenAI, Azure, local models)
+AI/ML generation services for intelligent intent fulfillment:
+- **Intent Understanding**: Natural language processing and intent extraction
+- **Content Generation**: Text, image, audio, and multi-modal content synthesis
+- **Reasoning and Decision**: Logical inference and decision support
+- **Pattern Recognition**: Identifies patterns in intent and context data
+- **Provider Abstraction**: Integrates multiple AI providers (OpenAI, Azure, local models)
 
-### 4. Infrastructure Layer
+#### Unified Messaging Protocol (UMP)
+Coordinates intent-driven communication across channels:
+- **Intent Resolution**: Analyzes communication intent and requirements
+- **Channel Selection**: Dynamically chooses optimal delivery channels
+- **Transport Abstraction**: Handles email, chat, voice, and modern protocols
+- **Delivery Confirmation**: Tracks and confirms intent fulfillment
+- **Consent Management**: Ensures privacy-aware communication
+
+### 4. Infrastructure and Compatibility Layer
+
+#### unison-agent-vdi (Virtual Display Interface)
+Provides sandbox environment for legacy tool compatibility:
+- **Virtual Display Rendering**: Creates synthetic GUI environments
+- **Tool Control Interface**: Manages conventional software interfaces through synthetic input
+- **Data Extraction**: Extracts structured data from legacy interfaces
+- **Sandbox Security**: Isolates legacy tool execution
+- **Backward Compatibility**: Bridges intent orchestration with traditional software
 
 #### unison-hal
 Hardware abstraction layer for device integration:
-- Sensor management and calibration
-- Device capability discovery
-- Hardware-specific optimizations
-- Driver management
-- Cross-platform compatibility
+- **Sensor Management**: Handles environmental and biometric sensors
+- **Device Capability Discovery**: Identifies and catalogs available hardware
+- **Hardware Optimization**: Optimizes performance for specific devices
+- **Cross-Platform Compatibility**: Ensures operation across diverse hardware
+- **Driver Management**: Manages hardware-specific drivers and interfaces
 
 #### unison-os
-Base runtime environment and boot flow:
-- Container orchestration and service mesh
-- System initialization and health monitoring
-- Resource management and scheduling
-- Security boundaries and isolation
-- Update and rollback mechanisms
+Base runtime environment and orchestration fabric:
+- **Container Orchestration**: Manages microservice deployment and scaling
+- **Service Mesh**: Provides secure inter-service communication
+- **Resource Management**: Optimizes compute, memory, and network usage
+- **Security Boundaries**: Enforces isolation and access controls
+- **System Health**: Monitors and maintains system reliability
 
-## Data Flow Architecture
+## Intent Flow Architecture
 
-### Event-Driven Communication
+### Event-Driven Intent Communication
 
-All services communicate using standardized **EventEnvelope** messages:
+All services communicate using standardized **EventEnvelope** messages that carry intent and context:
 
 ```json
 {
   "id": "uuid-v4",
   "timestamp": "2024-01-01T12:00:00Z",
-  "source": "unison-speech",
-  "intent": "user.query",
+  "source": "speech-intent",
+  "intent": "user.goal.synthesis",
   "payload": {
-    "text": "What's the weather like?",
-    "language": "en"
+    "text": "Show me the current budget status",
+    "intent_type": "analytical",
+    "outcome_requested": "budget_dashboard"
   },
   "context": {
-    "user_id": "user-123",
-    "session_id": "session-456"
+    "person_id": "person-123",
+    "session_id": "session-456",
+    "environmental": {
+      "location": "office",
+      "device": "desktop",
+      "time_of_day": "morning"
+    }
+  },
+  "intent_graph": {
+    "primary_goal": "budget_analysis",
+    "sub_goals": ["data_collection", "visualization", "insight_generation"],
+    "priority": "high",
+    "dependencies": []
   },
   "auth_scope": "read",
   "safety_context": {
-    "content_type": "general",
-    "user_age": "adult"
+    "content_type": "financial",
+    "consent_level": "explicit"
   }
 }
 ```
 
-### Request Flow
+### Intent Orchestration Flow
 
-1. **Input Processing**
-   - User interaction captured by I/O module
-   - Intent extracted and normalized
-   - Context enriched with user state
+1. **Intent Capture**
+   - Natural expression captured through intent modules
+   - Intent extracted and normalized into structured format
+   - Context enriched with environmental and preference data
+   - Intent graph initialized with goal decomposition
 
-2. **Orchestration**
-   - Event received by orchestrator
-   - Policy evaluated for safety and permissions
-   - Skills selected and dispatched
+2. **Graph Processing**
+   - Intent graph service decomposes goals into actionable sub-goals
+   - Context graph service fuses multi-dimensional context
+   - Dependencies resolved and priorities established
+   - Execution plan generated based on available resources
 
-3. **Generation**
-   - Skills process request with context
-   - Inference services called for AI tasks
-   - Results aggregated and formatted
+3. **Experience Generation**
+   - Skills and inference services execute intent-driven tasks
+   - Experience rendering engine synthesizes adaptive interface
+   - Multi-modal output generated based on context and preferences
+   - Real-time adaptation based on feedback and changing conditions
 
-4. **Response**
-   - Policy validation of generated content
+4. **Outcome Delivery**
+   - Policy validation ensures safety and compliance
+   - Experience delivered through optimal presentation channels
+   - Confirmation of intent fulfillment provided to user
+   - Learning data captured for future optimization
    - Response rendered through appropriate I/O
    - Context updated with new state
 

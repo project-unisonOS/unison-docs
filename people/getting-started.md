@@ -4,7 +4,7 @@ Welcome to Project Unison! This guide will help you get up and running with the 
 
 ## What is Unison?
 
-Unison is a **real-time, context-aware computing platform** that replaces traditional apps and interfaces with adaptive experiences. Instead of navigating applications and screens, you engage in natural exchanges where the system understands your intent, context, and preferences to generate personalized responses.
+Unison is a **real-time, context-aware intent orchestration environment** that replaces traditional software interfaces with adaptive experiences. Instead of navigating conventional workflows and screens, you engage in natural exchanges where the system understands your intent, context, and preferences to generate personalized outcomes.
 
 ### Key Features
 
