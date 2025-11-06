@@ -25,7 +25,10 @@ This repository contains the living documentation for Unison's platform design, 
 
 | Section | Description |
 |----------|-------------|
-| [**Getting Started**](people/getting-started.md) | Quick setup and first steps with Unison |
+| [**🚀 Hello Unison**](people/hello-unison.md) | **START HERE** - Welcome guide and first experience |
+| [**⚡ Quick Start**](people/quick-start.md) | Get Unison running in minutes |
+| [**✅ Onboarding Checklist**](people/onboarding-checklist.md) | Step-by-step guide to becoming a Unison expert |
+| [**Getting Started**](people/getting-started.md) | Detailed setup and configuration guide |
 | [**People Guide**](people/people-guide.md) | Comprehensive guide and features |
 | [**Scenarios**](scenarios/README.md) | Real-world scenarios and examples |
 | [**Troubleshooting**](people/troubleshooting.md) | Common issues and solutions |
