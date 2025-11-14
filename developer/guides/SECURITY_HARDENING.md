@@ -338,7 +338,7 @@ security-scan:
   runs-on: ubuntu-latest
   steps:
     - name: Run Trivy vulnerability scanner
-      uses: aquasecurity/trivy-action@master
+      uses: aquasecurity/trivy-action@main
       with:
         scan-type: 'fs'
         scan-ref: '.'
