@@ -1,268 +1,122 @@
-# Quick Start Guide 🚀
+# People Quick Start
 
-> **Get Unison running in minutes, not hours**
+> Last reviewed: February 2025
 
----
-
-## ⚡ 5-Minute Quick Start
-
-### 🌐 Option 1: Try Online (Fastest)
-
-1. **Open your browser** → [demo.unisonos.org](https://demo.unisonos.org)
-2. **Type or say**: "Hello Unison, what can you do?"
-3. **Explore**: Try different requests like:
-   - "Help me plan my day"
-   - "Show me my recent activities"
-   - "Play some focus music"
-
-**That's it!** You're experiencing Unison right now. 🎉
+This guide gets people experiencing Unison fast, whether through the hosted
+environment or a local stack. The structure mirrors what we plan to publish on
+GitHub Pages, so each section can stand on its own.
 
 ---
 
-## 🏠 15-Minute Local Setup
+## Step 1 · Pick Your Starting Point
 
-### Prerequisites Check
+### 1A · Hosted Experience (fastest path)
 
-```bash
-# Verify you have Docker
-docker --version
-# Should show: Docker version 20.x.x or higher
+- **Prerequisites:** Hosted invite, modern Chromium or Safari browser, microphone
+  enabled for voice.
+- **Launch:** Follow your invite link (or `https://demo.unisonos.org` when open
+  access returns) and sign in.
+- **Verify:** The canvas should greet you with “Hello from Unison.” Send
+  “What can you help me with this afternoon?” and watch the Skills panel update.
+- **Tips:** Keep DevTools closed to avoid extra latency. For blockers, jump to
+  the [People Guide](./people-guide.md#need-help).
 
-# Verify you have Docker Compose
-docker-compose --version
-# Should show: docker-compose version 2.x.x or higher
-```
+### 1B · Local Stack (full control)
 
-**Don't have Docker?** [Install Docker](https://docs.docker.com/get-docker/) (5 minutes)
+- **Prerequisites:** macOS, Linux, or WSL2; Docker Desktop 4.25+ (8 GB RAM, 4
+  CPUs); `make`; `git`; optional `uv`/Python 3.11 for custom skills.
+- **Clone + start:**
 
-### One-Command Setup
+  ```bash
+  git clone https://github.com/unison-platform/unison.git
+  cd unison
+  make up
+  ```
 
-```bash
-# Step 1: Get the code
-git clone https://github.com/unison-platform/unison.git
-cd unison
-
-# Step 2: Start the platform
-make up
-
-# Step 3: Wait for startup (2-3 minutes)
-# You'll see "✅ All services are healthy" when ready
-
-# Step 4: Open your browser
-open http://localhost:3000
-# or visit http://localhost:3000 manually
-```
-
-### Verify It's Working
-
-You should see:
-- ✅ **Unison Interface**: Welcome screen with chat interface
-- ✅ **Health Dashboard**: All 15+ services running
-- ✅ **Example Scenarios**: Ready-to-try demo scenarios
-
-**Try these commands:**
-- "What's the weather like?"
-- "Show me my files"
-- "Help me organize my week"
+- **Watch readiness:** Run `make health` or open `http://localhost:3000/health`
+  until every service shows `healthy`.
+- **Sign in locally:** Visit `http://localhost:3000`, open the Experience tab,
+  and ask “Show me what’s new in my workspace.”
+- **Troubleshooting:** Restart a noisy service with
+  `make restart service=context`. Clean up everything with
+  `make down && docker system prune -f`. More fixes live in
+  [`people-guide.md`](./people-guide.md#faq).
 
 ---
 
-## 🔧 If Something Goes Wrong
+## Step 2 · Sample Scenarios
 
-### Common Issues & Quick Fixes
+Choose a scenario that matches what you want to explore and follow along in the
+interface.
 
-#### Port Already in Use
-```bash
-# Error: "Port 3000 is already in use"
-# Fix: Kill the process or use a different port
-lsof -ti:3000 | xargs kill -9
-# Then run: make up again
-```
+- **Start simple:** [Basic Request](../scenarios/01-basic-request.md) shows the
+  envelope, orchestration path, and how Unison explains its plan.
+- **See context awareness:** [Scenario 02](../scenarios/02-context-aware-flow.md)
+  walks through how personal context changes responses in real time.
+- **Go deeper:** Browse the catalog in
+  [scenarios/README.md](../scenarios/README.md) for collaboration, automation,
+  and multi-hop consent flows.
 
-#### Docker Issues
-```bash
-# Error: "Docker daemon not running"
-# Fix: Start Docker Desktop or Docker service
-# On Mac: Open Docker Desktop app
-# On Linux: sudo systemctl start docker
-```
-
-#### Memory Issues
-```bash
-# Error: "Out of memory" or services keep restarting
-# Fix: Increase Docker memory allocation
-# Docker Desktop → Settings → Resources → Memory → 8GB+
-```
-
-#### Network Issues
-```bash
-# Error: "Services can't connect to each other"
-# Fix: Reset Docker network
-docker network prune
-make down
-make up
-```
-
-### Get Help Fast
-
-- **📋 Check Health**: Visit http://localhost:3000/health
-- **🔍 View Logs**: `make logs` or `docker-compose logs -f`
-- **💬 Get Help**: [Discord Community](https://discord.gg/unison)
-- **🐛 Report Issues**: [GitHub Issues](https://github.com/unison-platform/unison/issues)
+Keep the Devstack dashboard open while you run a scenario so you can watch which
+services respond.
 
 ---
 
-## 🎯 Your First 10 Minutes
+## Step 3 · Make It Yours
 
-### Explore the Interface
-
-1. **Chat Interface**: Main interaction point
-2. **Context Panel**: Shows what Unison knows about you
-3. **Skills Panel**: Available capabilities
-4. **Settings**: Personalization options
-
-### Try These Scenarios
-
-#### 🌅 Morning Routine
-```
-You: "Good morning Unison"
-
-Unison: "Good morning! I see you have a team standup at 9 AM. 
-I've prepared your calendar and organized your priority emails. 
-Would you like me to start your focus playlist?"
-```
-
-#### 💻 Work Mode
-```
-You: "I need to work on the presentation"
-
-Unison: "I'll help you focus. I've opened your presentation files, 
-silenced notifications, and set a 25-minute focus timer. 
-Need any research or data for the presentation?"
-```
-
-#### 🏠 Personal Assistant
-```
-You: "What's my schedule today?"
-
-Unison: "You have 3 meetings and 2 deadlines. 
-I've prioritized your tasks and suggested optimal break times. 
-Should I order lunch for your 12:30 break?"
-```
+1. **Personalize the experience.** Use the gear icon to set your preferred name,
+   voice, notification cadence, and privacy boundaries. The
+   [Hello Unison walkthrough](./hello-unison.md) highlights the quickest wins.
+2. **Connect data sources.** Calendar, files, and presence connectors keep
+   experiences grounded. Configure them in Settings → Integrations, then cross
+   reference `people-guide.md#bring-your-data`.
+3. **Shape behaviors.** Load or tweak renderer templates from the “Customize
+   Surface” dialog, and use the
+   [Experience Reference](./reference/experience-guide.md) for DSL details.
 
 ---
 
-## 🛠️ Customize Your Experience
+## Service Map Snapshot
 
-### Set Your Preferences
+- **Experience surfaces:** Experience Renderer (`:8092`) and Devstack UI
+  (`:3000`) provide the canvases and health dashboards.
+- **Orchestration spine:** Orchestrator (`:8080`), Intent Graph (`:8084`), and
+  Context Graph (`:8085`) ingest envelopes and plan execution.
+- **Policy + consent:** Policy (`:8083`), Auth (`:8086`), and Consent (`:8087`)
+  evaluate bundles, mint tokens, and enforce grants.
+- **Data stores:** Context (`:8081`) and Storage (`:8082`) keep graph state,
+  replay data, and artifacts durable.
+- **Skills + I/O:** Speech, Vision, Core I/O, and the skills registry
+  (`:8095+`) capture multimodal inputs and fan out to capabilities.
 
-1. **Click Settings** (gear icon)
-2. **Configure**:
-   - **Name**: How Unison addresses you
-   - **Voice**: Preferred voice and accent
-   - **Theme**: Light, dark, or auto
-   - **Notifications**: When and how Unison interrupts
-   - **Privacy**: What data Unison can use
-
-### Add Your Data
-
-1. **Connect Calendar**: Google Calendar, Outlook
-2. **Connect Files**: Google Drive, OneDrive, local files
-3. **Set Location**: Home, work, or auto-detect
-4. **Configure Work Hours**: When you're typically working
+Need the full dependency graph? Jump to the
+[Developer Platform Overview](../developer/platform-overview.md) or the
+[Architecture Guide](../developer/architecture.md).
 
 ---
 
-## 📊 What's Running Under the Hood
+## Health & Support
 
-When you run `make up`, you're starting:
-
-| Service | Purpose | URL |
-|---------|---------|-----|
-| **Unison Core** | Main interface | http://localhost:3000 |
-| **Context Graph** | Environment understanding | http://localhost:8081 |
-| **Intent Graph** | Natural language processing | http://localhost:8080 |
-| **Experience Renderer** | Dynamic UI generation | http://localhost:8082 |
-| **Health Monitor** | System status | http://localhost:3000/health |
-
-### Monitor Performance
-
-```bash
-# Check all services
-make health
-
-# View real-time logs
-make logs
-
-# Restart specific service
-make restart service=context-graph
-
-# Stop everything
-make down
-```
+- **Check status:** Use `make health`, `make logs`, or
+  `http://localhost:3000/status`.
+- **Self-serve fixes:** `people-guide.md#need-help` covers the top interrupts and
+  how to collect diagnostics.
+- **Contact the team:** File issues in the monorepo, visit the community
+  Discord, or email support—links stay updated in the People Guide.
 
 ---
 
-## 🚀 Next Steps
+## What’s Next?
 
-### For Exploration
-- **Try Scenarios**: Click "Scenarios" in the interface
-- **Test Voice**: Enable voice interaction in settings
-- **Explore Skills**: Browse available capabilities
+- **Experience track:** Continue with the [People Guide](./people-guide.md) for
+  accessibility, collaboration, and rollout planning. Pair it with the
+  [experience reference](./reference/experience-guide.md) when designing new
+  surfaces.
+- **Builder track:** Move into
+  [Developer Getting Started](../developer/getting-started.md) or the
+  [Platform Overview](../developer/platform-overview.md) to set up your
+  environment, learn repo make targets, and plan contributions.
 
-### For Development
-- **Read Developer Guide**: [Development docs](../developer/getting-started.md)
-- **Examine Code**: Look at the service architectures
-- **Build Skills**: Create custom capabilities
-
-### For Production
-- **Security Setup**: Configure authentication and authorization
-- **Scaling**: Adjust resource limits and clustering
-- **Monitoring**: Set up observability and alerting
-
----
-
-## 🎉 Success! You're Running Unison
-
-### What You've Accomplished
-- ✅ **Deployed 15+ microservices** working together
-- ✅ **Experienced adaptive interfaces** that respond to context
-- ✅ **Seen natural language understanding** in action
-- ✅ **Configured personalization** and privacy settings
-- ✅ **Joined the future** of human-computer interaction
-
-### Keep Going
-
-1. **Explore More**: Try advanced scenarios and features
-2. **Join Community**: Connect with other Unison users
-3. **Contribute**: Help improve the platform
-4. **Deploy**: Set up Unison for your team or organization
-
----
-
-## 📞 Need Help?
-
-### Instant Help
-- **📋 In-App Help**: Click the help icon in Unison
-- **🔍 Health Check**: http://localhost:3000/health
-- **📊 System Status**: http://localhost:3000/status
-
-### Community Support
-- **💬 Discord**: [Join 24/7 community chat](https://discord.gg/unison)
-- **📧 Email**: support@unisonos.org
-- **🐛 Issues**: [Report on GitHub](https://github.com/unison-platform/unison/issues)
-
-### Resources
-- **📖 Full Docs**: [Documentation hub](https://docs.unisonos.org)
-- **🎓 Tutorials**: [Step-by-step guides](https://learn.unisonos.org)
-- **🎬 Videos**: [Demo videos](https://youtube.com/c/unisonplatform)
-
----
-
-**Welcome to the Unison community!** 🌟
-
-*You're now part of the movement to make technology adapt to humans, not the other way around.*
-
----
-
-*Quick Start Guide | Version 1.0 | Updated: January 2025*
+Log what felt great (or rough) as you explore. Feeding those insights into the
+architecture + onboarding refresh keeps the documentation evolving with the
+product.

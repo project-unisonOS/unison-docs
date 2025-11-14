@@ -1,80 +1,64 @@
-# Project Unison – Documentation Hub
+# Project Unison Documentation Hub
 
 ## Overview
 
-Project Unison is an **enterprise-grade intent orchestration platform** that replaces traditional software interfaces with **real-time, context-aware experience generation**. 
+Project Unison is an **enterprise-grade intent orchestration platform** that replaces traditional interfaces with real-time, context-aware experience generation. The platform unifies more than fifteen microservices behind hard contracts, shared tooling, and a single deployment workflow so teams can ship safely while retaining service autonomy.
 
-The Unison Platform transforms 15+ distributed microservices into a **unified, cohesive system** while maintaining development autonomy. It provides **one-command setup**, **universal CI/CD**, and **enterprise-grade security** through a centralized platform spine.
+**Key Platform Features**
 
-**Key Platform Features:**
-- 🚀 **One-Command Setup**: `make up` starts the entire platform
-- 🔧 **Universal CI/CD**: Reusable workflows with security & compliance
-- 📋 **Hard Interfaces**: Enforced contracts via unison-spec
-- 🔒 **Enterprise Security**: SLSA compliance, SBOM, provenance
-- 📊 **Full Observability**: Distributed tracing, metrics, logging
-- 🏗️ **Domain Organization**: Core, I/O, Skills+Inference, Infrastructure
-
-This repository contains the living documentation for Unison's platform design, development, and operations.
+- **One-command setup**: `make up` brings the entire platform online.
+- **Universal CI/CD**: Reusable workflows with security, provenance, and SBOM enforcement.
+- **Hard interfaces**: Shared schemas via `unison-spec` remove ad hoc contracts.
+- **Enterprise security**: Policy, consent, and tracing guard every request.
+- **Full observability**: Distributed tracing, metrics, and structured logging everywhere.
+- **Clear domain boundaries**: Core services, I/O gateways, skills + inference, and infrastructure layers.
 
 ---
 
-## 📚 Documentation Structure
+## Documentation Structure
 
-### 👥 People Documentation
-**For people using Unison**
-
-| Section | Description |
-|----------|-------------|
-| [**🚀 Hello Unison**](people/hello-unison.md) | **START HERE** - Welcome guide and first experience |
-| [**⚡ Quick Start**](people/quick-start.md) | Get Unison running in minutes |
-| [**✅ Onboarding Checklist**](people/onboarding-checklist.md) | Step-by-step guide to becoming a Unison expert |
-| [**Getting Started**](people/getting-started.md) | Detailed setup and configuration guide |
-| [**People Guide**](people/people-guide.md) | Comprehensive guide and features |
-| [**Scenarios**](scenarios/README.md) | Real-world scenarios and examples |
-| [**Troubleshooting**](people/troubleshooting.md) | Common issues and solutions |
-
-### 🛠️ Developer Documentation
-**For developers building on the Unison Platform**
+### People Experiences
+Guides for everyone interacting with Unison—explorers, facilitators, and everyday collaborators.
 
 | Section | Description |
-|----------|-------------|
-| [**Getting Started**](developer/getting-started.md) | 🚀 One-command platform setup and verification |
-| [**Platform Overview**](developer/platform-overview.md) | 🏗️ Platform architecture and domain organization |
-| [**Development Workflow**](developer/development-workflow.md) | 🔧 Platform development process and tools |
-| [**API Reference**](developer/api-reference/README.md) | 📋 Complete API documentation with contracts |
-| [**Deployment Guide**](developer/deployment/README.md) | 🚀 Development and production deployment |
-| [**Migration Guide**](developer/migration-guide.md) | 🔄 Moving from individual services to platform |
-| [**Contributing**](developer/contributing.md) | 🤝 Platform development contribution process |
+|---------|-------------|
+| [Hello Unison](people/hello-unison.md) | **Start here** – guided first interaction and narrative walkthrough. |
+| [Quick Start](people/quick-start.md) | Launch the hosted or local experience in minutes. |
+| [Onboarding Checklist](people/onboarding-checklist.md) | Repeatable ramp plan for teammates and partners. |
+| [People Guide](people/people-guide.md) | Feature-by-feature reference for everyday use. |
+| [Scenarios](scenarios/README.md) | Real-world patterns (basic request, context-aware flow, etc.). |
+| [Troubleshooting](people/troubleshooting.md) | Common issues and fast fixes. |
+| [Experience Guide](people/reference/experience-guide.md) | Deep reference for surfaces, controls, and cues. |
 
-### 🔧 Operations Documentation
-**For system administrators and operators**
+### Developer Documentation
+Everything builders need—from local setup to hard contracts. Start with the orienting docs, then dive into guides and references.
 
 | Section | Description |
-|----------|-------------|
-| [**Security**](operations/security.md) | Security architecture, configuration, and procedures |
-| [**Monitoring**](operations/monitoring.md) | System monitoring, metrics, and alerting |
-| [**Backup & Recovery**](operations/backup-recovery.md) | Data protection and disaster recovery |
-| [**Maintenance**](operations/maintenance.md) | System maintenance and operational procedures |
+|---------|-------------|
+| [Developer Getting Started](developer/getting-started.md) | Local environment prep, verification, and tooling. |
+| [Platform Overview](developer/platform-overview.md) | Domains, dataflow, and cross-service boundaries. |
+| [Development Workflow](developer/development-workflow.md) | Branching strategy, testing expectations, and release cadence. |
+| [Migration Guide](developer/migration-guide.md) | Moving legacy services toward shared contracts. |
+| [Guides](developer/guides) | Deployment, dev-mode quickstart, inference, setup, and security hardening references. |
+| [Security Notes](developer/guides/security.md) | Architecture + configuration details for securing deployments. |
 
-### 📋 Specifications
-**Technical specifications and contracts**
+### Specifications & API
+The source of truth for interfaces and automation.
 
-| Repository | Purpose |
-|-------------|----------|
-| [`project-unisonOS/unison-spec`](https://github.com/project-unisonOS/unison-spec) | Core data schemas, API contracts, and technical requirements |
-| [**Event Envelope**](../unison-spec/specs/event-envelope.md) | Standard message format for system communication |
-| [**Security Requirements**](../unison-spec/specs/security-requirements.md) | Security specifications and compliance requirements |
-| [**Version Compatibility**](../unison-spec/specs/version-compatibility.md) | Version matrix and compatibility information |
+| Repository / Doc | Purpose |
+|------------------|---------|
+| [`project-unisonOS/unison-spec`](https://github.com/project-unisonOS/unison-spec) | Canonical schemas and requirements. |
+| [API Reference](developer/api/README.md) | Endpoint walkthroughs and payload expectations. |
+| [Schema Specs](developer/specs/README.md) | Shared contracts (event envelope, policy rules, etc.). |
+| [Event Envelope](../unison-spec/specs/event-envelope.md) | Standard message format for every service boundary. |
 
 ---
 
-## 🚀 Platform Quick Start
-
-**Start the entire Unison Platform with one command:**
+## Platform Quick Start
 
 ```bash
 # Clone the platform repository
-git clone https://github.com/project-unisonos/unison-platform.git
+git clone https://github.com/project-unisonOS/unison-platform.git
 cd unison-platform
 
 # Configure and start everything
@@ -85,248 +69,169 @@ make up
 make health
 ```
 
-**🎉 That's it! 15+ services are now running with:**
-- ✅ Intent orchestration and processing
-- ✅ Context management and fusion  
-- ✅ Experience generation and rendering
-- ✅ I/O services (speech, vision, core)
-- ✅ Inference and skills capabilities
-- ✅ Full observability and monitoring
+**What you get**
 
-**Learn more:** [Developer Getting Started](developer/getting-started.md)
+- Intent orchestration and event routing.
+- Context management and long-term memory.
+- Experience rendering (cards, text, speech).
+- I/O agents for speech, vision, and desktop control.
+- Inference, skills, and policy enforcement.
+- Full observability stack (Prometheus, Grafana, Jaeger).
+
+See [Developer Getting Started](developer/getting-started.md) for environment requirements and troubleshooting.
 
 ---
 
-## 🚀 Quick Links
+## Quick Links
 
 ### For New People
-- [**Try the Demo**](https://demo.unisonos.org) - Experience Unison in your browser
-- [**Getting Started**](people/getting-started.md) - Set up Unison locally
-- [**People Guide**](people/people-guide.md) - Learn the basics
+- [Try the demo](https://demo.unisonos.org) – experience the agent.
+- [Hello Unison](people/hello-unison.md) – guided first session.
+- [People Guide](people/people-guide.md) – feature reference.
+- [Troubleshooting](people/troubleshooting.md) – unblock yourself fast.
 
 ### For Developers
-- [**Development Setup**](developer/getting-started.md) - Start developing
-- [**API Documentation**](developer/api-reference/README.md) - Explore the APIs
-- [**Architecture Overview**](developer/architecture.md) - Understand the system
+- [Architecture Overview](developer/architecture.md) – understand the system.
+- [Dev Environment Setup](developer/getting-started.md) – local stack instructions.
+- [API Reference](developer/api-reference/README.md) – schemas and endpoints.
+- [Examples](developer/examples/README.md) – reusable patterns.
 
 ### For Operators
-- [**Production Deployment**](developer/deployment/production.md) - Deploy to production
-- [**Security Guide**](operations/security.md) - Secure your deployment
-- [**Monitoring Setup**](operations/monitoring.md) - Set up observability
+- [Security Guide](operations/security.md) – controls and policies.
+- [Production Deployment](developer/deployment/production.md) – rollout steps.
+- [Monitoring](operations/monitoring.md) – dashboards and alerts.
+- [Maintenance](operations/maintenance.md) – routine + emergency playbooks.
+
+### For Maintainers
+- [Documentation Plan](DOCUMENTATION_UPDATE_PLAN.md) – roadmap and priorities.
+- [Implementation Plans](../) – milestone status across services.
+- [docs-lint CI](.github/workflows/docs-lint.yml) – checks run on every PR.
 
 ---
 
-## 🏗️ System Architecture
+## Layered Architecture Overview
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    User Interface Layer                      │
-│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────┐ │
-│  │    Web      │ │   Mobile    │ │    CLI      │ │   API   │ │
-│  │  Interface  │ │   Apps      │ │  Interface  │ │ Gateway │ │
-│  └─────────────┘ └─────────────┘ └─────────────┘ └─────────┘ │
-└─────────────────────────────────────────────────────────────┘
-                              │
-┌─────────────────────────────────────────────────────────────┐
-│                    Core Services Layer                       │
-│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────┐ │
-│  │ Orchestrator│ │   Context   │ │   Storage   │ │ Policy  │ │
-│  │ (Decision)  │ │ (Memory)    │ │ (Data)      │ │(Safety) │ │
-│  └─────────────┘ └─────────────┘ └─────────────┘ └─────────┘ │
-│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐             │
-│  │    Auth     │ │  Inference  │ │    Skills   │             │
-│  │ (Identity)  │ │ (AI/ML)     │ │ (Logic)     │             │
-│  └─────────────┘ └─────────────┘ └─────────────┘             │
-└─────────────────────────────────────────────────────────────┘
-                              │
-┌─────────────────────────────────────────────────────────────┐
-│                  Infrastructure Layer                        │
-│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────┐ │
-│  │   Docker    │ │   Kong      │ │   Redis     │ │  TLS    │ │
-│  │ Containers  │ │ API Gateway │ │   Cache     │ │Security │ │
-│  └─────────────┘ └─────────────┘ └─────────────┘ └─────────┘ │
-└─────────────────────────────────────────────────────────────┘
-```
+1. **User Interface Layer** – Web, mobile, CLI, and API gateway clients.
+2. **Core Services Layer** – Orchestrator (decision engine), Context (memory), Storage (data durability), Policy (safety), Auth, Skills, and Inference services.
+3. **Infrastructure Layer** – Docker/Kubernetes, Kong gateway, Redis, TLS termination, secrets, and observability tooling.
+
+See [unison-docs/developer/architecture.md](developer/architecture.md) for diagrams and detailed narratives.
 
 ---
 
-## 🌟 Key Features
+## Feature Highlights
 
-### 🎯 Natural Interaction
-- **Conversational Interface**: Talk to Unison naturally
-- **Multimodal Support**: Text, voice, images, and more
-- **Context Understanding**: Remembers preferences and history
-- **Adaptive Responses**: Learns and improves over time
+### Natural Interaction
+- Conversational interface with multimodal inputs.
+- Context fusion keeps preferences, goals, and history.
+- Adaptive responses tuned by policy and consent signals.
 
-### 🔒 Privacy & Security
-- **Local-First Architecture**: Data stays on your device when possible
-- **End-to-End Encryption**: All communication encrypted
-- **User Consent**: Granular control over data usage
-- **Open Source**: Transparent and auditable code
+### Privacy & Security
+- Local-first computation whenever possible.
+- End-to-end encryption between services.
+- Explicit consent scopes embedded in every EventEnvelope.
+- Entire stack is open source and auditable.
 
-### 🚀 Performance & Reliability
-- **Microservices Architecture**: Scalable and resilient
-- **Real-Time Processing**: Sub-second response times
-- **Fault Tolerance**: Graceful degradation and recovery
-- **Multi-Cloud Support**: Deploy anywhere
+### Performance & Reliability
+- Microservices with contract enforcement and retries.
+- Sub-second orchestration targeting real-time experiences.
+- Replay, idempotency, and durability layers for recovery.
+- Deployable on laptops, edge clusters, or cloud providers.
 
-### 🔧 Extensibility
-- **Skill System**: Add custom capabilities
-- **Plugin Architecture**: Extend functionality
-- **Open APIs**: Build integrations
-- **Developer Tools**: Comprehensive development kit
+### Extensibility
+- Skill system for new capabilities.
+- Plugin architecture and open APIs for integrations.
+- Developer tools, SDKs, and CI templates for every repo.
 
 ---
 
-## 📖 Navigation Guide
+## Navigation Guide
 
 ### By Role
 
-**I'm new to Unison...**
-1. Start with [Getting Started](people/getting-started.md)
-2. Read the [People Guide](people/people-guide.md)
-3. Try [Scenarios](scenarios/README.md)
-4. Check [Troubleshooting](people/troubleshooting.md) if needed
-
-**I'm a developer...**
-1. Read the [Architecture Overview](developer/architecture.md)
-2. Set up [Development Environment](developer/getting-started.md)
-3. Explore [API Documentation](developer/api-reference/README.md)
-4. Learn [Contributing Guidelines](developer/contributing.md)
-
-**I'm an operator...**
-1. Review [Security Guide](operations/security.md)
-2. Set up [Production Deployment](developer/deployment/production.md)
-3. Configure [Monitoring](operations/monitoring.md)
-4. Learn [Maintenance Procedures](operations/maintenance.md)
+- **New to Unison**: [Getting Started](people/getting-started.md) → [People Guide](people/people-guide.md) → [Scenarios](scenarios/README.md) → [Troubleshooting](people/troubleshooting.md).
+- **Developers**: [Architecture](developer/architecture.md) → [Dev Setup](developer/getting-started.md) → [API Reference](developer/api-reference/README.md) → [Contributing](developer/contributing.md).
+- **Operators**: [Security](operations/security.md) → [Production Deployment](developer/deployment/production.md) → [Monitoring](operations/monitoring.md) → [Maintenance](operations/maintenance.md).
 
 ### By Topic
 
-**Learning about Unison:**
-- [Vision and Philosophy](vision.md)
-- [Architecture Overview](developer/architecture.md)
-- [Feature Matrix](feature-matrix.md)
-
-**Building with Unison:**
-- [API Reference](developer/api-reference/README.md)
-- [Skill Development](developer/skills/README.md)
-- [Integration Examples](developer/examples/README.md)
-
-**Deploying Unison:**
-- [Local Development](developer/deployment/local-development.md)
-- [Production Deployment](developer/deployment/production.md)
-- [Security Hardening](operations/security.md)
-
-**Operating Unison:**
-- [Security Operations](operations/security.md)
-- [Monitoring and Alerting](operations/monitoring.md)
-- [Backup and Recovery](operations/backup-recovery.md)
+- **Learn the Platform**: [Vision](vision.md), [Architecture](developer/architecture.md), [Feature Matrix](feature-matrix.md).
+- **Build with Unison**: [API Reference](developer/api-reference/README.md), [Skill Development](developer/skills/README.md), [Integration Examples](developer/examples/README.md).
+- **Deploy Unison**: [Local Development](developer/deployment/local-development.md), [Production Deployment](developer/deployment/production.md), [Security Hardening](operations/security.md).
+- **Operate Unison**: [Security Operations](operations/security.md), [Monitoring](operations/monitoring.md), [Backup & Recovery](operations/backup-recovery.md).
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
-This documentation is open for contribution.
+Documentation is fully open to contributions.
 
-### How to Contribute
+1. **Improve existing content** – fix typos, add examples, refresh diagrams.
+2. **Add new documentation** – tutorials, walkthroughs, API samples.
+3. **Improve accessibility** – translations, WCAG compliance, alt text.
 
-1. **Improve Existing Content**
-   - Fix typos and errors
-   - Add examples and clarifications
-   - Update outdated information
+**Guidelines**
+- Follow the [markdown style guide](.markdownlint.json).
+- Keep language clear, inclusive, and actionable.
+- Test every instruction you publish.
+- Provide context and examples for new concepts.
 
-2. **Add New Documentation**
-   - Write tutorials and guides
-   - Document new features
-   - Create examples and patterns
-
-3. **Translation and Accessibility**
-   - Translate content to other languages
-   - Improve accessibility compliance
-   - Add alternative formats
-
-### Contribution Guidelines
-
-- Follow our [style guide](.markdownlint.json) for formatting
-- Ensure all content is WCAG-compliant and accessible
-- Use clear, inclusive language
-- Include examples and code snippets where helpful
-- Test all instructions and examples
-
-### Review Process
-
-1. Submit pull requests with clear descriptions
-2. Changes are reviewed by the documentation team
-3. Technical content reviewed by relevant engineers
-4. Updates merged and deployed to documentation site
+**Review Process**
+1. Open a PR with a descriptive summary.
+2. Docs maintainers review structure and voice.
+3. Relevant engineers review technical accuracy.
+4. Once approved, changes merge and publish automatically.
 
 ---
 
-## 📊 Documentation Metrics
+## Documentation Metrics
 
-### Coverage
-- **User Documentation**: 95% complete
-- **Developer Documentation**: 90% complete
-- **Operations Documentation**: 85% complete
-- **API Documentation**: 100% complete
-
-### Quality
-- **Accessibility**: WCAG 2.1 AA compliant
-- **Formatting**: Markdown lint compliant
-- **Links**: All external links validated
-- **Examples**: All code examples tested
+- **User documentation**: ~95% complete.
+- **Developer documentation**: ~90% complete.
+- **Operations documentation**: ~85% complete.
+- **API documentation**: 100% covered via `unison-spec`.
+- **Accessibility**: WCAG 2.1 AA.
+- **Linting**: markdownlint + remark enforced in CI.
+- **Examples**: All inline code tested during docs CI.
 
 ---
 
-## 🔗 Related Resources
+## Related Resources
 
-### Official Resources
-- **Project Website**: [unisonos.org](https://unisonos.org)
-- **GitHub Organization**: [project-unisonOS](https://github.com/project-unisonOS)
+### Official Channels
+- **Website**: [unisonos.org](https://unisonos.org)
+- **GitHub**: [project-unisonOS](https://github.com/project-unisonOS)
 - **Community Forum**: [community.unisonos.org](https://community.unisonos.org)
-- **Discord Server**: [discord.gg/unisonos](https://discord.gg/unisonos)
+- **Discord**: [discord.gg/unisonos](https://discord.gg/unisonos)
 
-### Code Repositories
+### Core Repositories
+
 | Repository | Purpose | Language |
 |------------|---------|----------|
 | [`unison-orchestrator`](https://github.com/project-unisonOS/unison-orchestrator) | Central coordination service | Python |
 | [`unison-context`](https://github.com/project-unisonOS/unison-context) | Context and memory management | Python |
-| [`unison-storage`](https://github.com/project-unisonOS/unison-storage) | Data persistence and encryption | Python |
-| [`unison-policy`](https://github.com/project-unisonOS/unison-policy) | Safety and policy enforcement | Python |
+| [`unison-storage`](https://github.com/project-unisonOS/unison-storage) | Persistence and encryption | Python |
+| [`unison-policy`](https://github.com/project-unisonOS/unison-policy) | Safety and consent enforcement | Python |
 | [`unison-auth`](https://github.com/project-unisonOS/unison-auth) | Authentication and authorization | Python |
 | [`unison-inference`](https://github.com/project-unisonOS/unison-inference) | AI/ML generation services | Python |
 | [`unison-common`](https://github.com/project-unisonOS/unison-common) | Shared libraries and utilities | Python |
-| [`unison-devstack`](https://github.com/project-unisonOS/unison-devstack) | Development and deployment tools | Docker |
-
-### Tools and Utilities
-- **Unison CLI**: Command-line interface for Unison
-- **Mobile Apps**: iOS and Android applications
-- **Development Tools**: SDKs, debuggers, and utilities
-- **Monitoring Tools**: Dashboards and alerting systems
+| [`unison-devstack`](https://github.com/project-unisonOS/unison-devstack) | Dev + deployment tooling | Docker |
 
 ---
 
-## 📝 License
+## License
 
-This documentation is licensed under the Creative Commons Attribution 4.0 International License. You may share and adapt it with proper attribution.
-
----
-
-## 🆘 Getting Help
-
-If you need help with Unison:
-
-1. **Documentation Issues**: Report problems with this documentation
-2. **Technical Support**: Get help with technical problems
-3. **Community Questions**: Ask questions and share experiences
-4. **Feature Requests**: Suggest new features and improvements
-
-### Contact Options
-- **GitHub Issues**: [Report documentation issues](https://github.com/project-unisonOS/unison-docs/issues)
-- **Discord Community**: [Join our Discord](https://discord.gg/unisonos)
-- **Email**: docs@unisonos.org
-- **Twitter**: [@unisonos](https://twitter.com/unisonos)
+All documentation is published under the **Creative Commons Attribution 4.0 International** license. Share and adapt it with attribution to Project Unison.
 
 ---
 
-*Last updated: January 2024 | Version: 1.0.0*
+## Getting Help
+
+1. **Documentation issues**: [open an issue](https://github.com/project-unisonOS/unison-docs/issues).
+2. **Technical support**: Ask in [Discord](https://discord.gg/unisonos) or the community forum.
+3. **Feature requests**: File issues in the relevant service repository.
+4. **Direct contact**: docs@unisonos.org or [@unisonos](https://twitter.com/unisonos).
+
+---
+
+*Last updated: November 2025 · Version 1.1.0*

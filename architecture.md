@@ -66,16 +66,32 @@ An EventEnvelope includes:
 ## Design Principles
 
 - **Modularity:** Each service can be replaced or scaled independently.  
-- **Interoperability:** Uses open schemas (JSON, MCP‑compatible agent protocols).  
+- **Interoperability:** Uses open schemas (JSON, MCP‐compatible agent protocols).  
 - **Security & Privacy:** User data is partitioned; sensitive operations require explicit policy approval.  
 - **Extensibility:** New I/O agents or inference engines can attach without changing core logic.  
-- **Transparency:** All inter‑service communication is logged and auditable.
+- **Transparency:** All inter‐service communication is logged and auditable.
 
 **Self-Introspection:**
 
 Every Unison instance maintains a registry of its I/O capabilities, connected components, and available inference
 engines. This allows the system to explain its own configuration conversationally and assist people in extending or
 troubleshooting it.
+
+## Repository & Service Map
+
+| Domain | Repository / Path | Description | Default Ports |
+|--------|------------------|-------------|---------------|
+| Orchestrator | [`unison-orchestrator`](../unison-orchestrator/README.md) | FastAPI control plane that routes EventEnvelopes, queries Policy, Context, Storage, and emits skills. | 8080 |
+| Context | [`unison-context`](../unison-context/README.md) | Short- and long-term memory service with graph storage and replay APIs. | 8081 |
+| Storage | [`unison-storage`](../unison-storage/README.md) | Durable object store, encrypted volumes, and WAL-backed replay datasets. | 8082 |
+| Policy | [`unison-policy`](../unison-policy/README.md) | Consent, governance, and rule evaluation service. Hosts `/evaluate`, hot reload, and metrics endpoints. | 8083 |
+| Auth | [`unison-auth`](../unison-auth/README.md) | JWT + JWKS issuance/verification, service-to-service trust. | 8084 |
+| I/O Services | [`unison-io-speech`](../unison-io-speech/README.md), [`unison-io-vision`](../unison-io-vision/README.md), [`unison-io-core`](../unison-io-core/README.md) | Speech, vision, and desktop adapters that emit/consume EventEnvelopes. | 8084‑8087 |
+| Skills & Experience | [`unison-experience-renderer`](../unison-experience-renderer/README.md), [`unison-agent-vdi`](../unison-agent-vdi/README.md) | Implement renderer DSLs, preview surfaces, and VDI agent experiences. | 8090+ |
+| Devstack | [`unison-devstack`](../unison-devstack/README.md) | Docker Compose, health tooling, and scripts (`make up`, smoke tests, stack controls). | n/a |
+| Shared Libraries | [`unison-common`](../unison-common/README.md) | EventEnvelope validation, tracing, telemetry, consent/auth helpers, HTTP clients. | n/a |
+
+> Tip: `git grep -n SERVICE_PORT` in each service repo surfaces the latest port mapping when you customize profiles.
 
 ## API Endpoints (current)
 

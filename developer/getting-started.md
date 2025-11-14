@@ -1,410 +1,166 @@
-# Getting Started with the Unison Platform
+# Developer Getting Started
 
-> **Start the entire Unison Platform with a single command and experience the power of unified intent orchestration.**
+> Last reviewed: February 2025
 
-## 🚀 One-Command Platform Setup
-
-### Prerequisites
-
-- **Docker Desktop** (or Docker Engine with Compose)
-- **Git** (for cloning repositories)
-- **Make** (optional, for command shortcuts)
-
-### Quick Start
-
-```bash
-# 1. Clone the platform repository
-git clone https://github.com/project-unisonos/unison-platform.git
-cd unison-platform
-
-# 2. Configure environment
-cp .env.template .env
-# Edit .env with your configuration
-
-# 3. Start the entire platform
-make up
-
-# 4. Verify everything is working
-make health
-```
-
-**That's it! 🎉 The entire Unison platform with 15+ services is now running.**
+This guide is the first stop for builders working inside the Unison workspace. It shows how to prepare your environment,
+boot the devstack, iterate on individual services, and stay aligned with the docs that will back the future GitHub Pages
+site.
 
 ---
 
-## 🏗️ What You Just Started
+## 1. Prepare Your Environment
 
-The Unison Platform includes all these services, automatically interconnected:
+### Requirements
 
-### **Core Services**
-- **Orchestrator** (8090): Central coordination and workflow management
-- **Context Service** (8081): User context and session management
-- **Policy Service** (8083): Business rules and compliance enforcement
-- **Auth Service** (8083): Authentication, authorization, and identity management
+- macOS Sonoma+, Linux, or Windows 11 with WSL2
+- Docker Desktop 4.25+ (8 GB RAM, 4 CPUs)
+- `git`, `make`, and a recent shell (bash, zsh, pwsh)
+- Python 3.11+ and `uv` or `pipx` for service-specific tooling
+- Node.js 20+ if you plan to run documentation linting locally
 
-### **Intent Orchestration**
-- **Intent Graph** (8080): Intent processing and decomposition
-- **Context Graph** (8091): Context fusion and management
-- **Experience Renderer** (8092): Adaptive interface generation
-- **Agent VDI** (8093): Virtual display interface
+### Clone the Workspace
 
-### **I/O Services**
-- **I/O Speech** (8084): Voice processing and synthesis
-- **I/O Vision** (8086): Image and video analysis
-- **I/O Core** (8085): I/O coordination and protocol management
+```bash
+git clone https://github.com/unison-platform/unison.git
+cd unison
+```
 
-### **Skills & Inference**
-- **Inference Service** (8087): ML model inference gateway
-
-### **Infrastructure**
-- **Storage Service** (8082): Data persistence and retrieval
-- **Redis** (6379): Caching and session storage
-- **PostgreSQL** (5432): Primary data storage
-- **NATS** (4222): Event streaming and messaging
+The repository contains all platform services (for example `unison-orchestrator/`, `unison-context/`,
+`unison-policy/`), support tooling (`unison-devstack/`, `scripts/`), and documentation (`unison-docs/`). Keep the root
+clean—shared make targets expect this layout.
 
 ---
 
-## 📋 Essential Commands
+## 2. Boot the Devstack
 
-### Platform Management
+1. **Copy environment defaults**
 
-```bash
-# Start development environment
-make dev
+   ```bash
+   cp unison-platform/.env.template unison-platform/.env
+   ```
 
-# Start with observability stack
-make observability
+   Update secrets or overrides as needed. Dev defaults avoid any hosted dependencies.
 
-# View logs from all services
-make logs
+2. **Start services**
 
-# Check service health
-make health
+   ```bash
+   make up
+   ```
 
-# Stop everything
-make down
+   This command (defined at the repo root) orchestrates the compose bundle in `unison-platform/compose/compose.yaml`,
+   starting the experience renderer, orchestrator, policy, context, storage, skills, and I/O services.
 
-# Clean up resources
-make clean
-```
+3. **Verify readiness**
 
-### Service-Specific Operations
+   - Run `make health` to aggregate `/ready` probes.
+   - Open `http://localhost:3000` for the Devstack dashboard and experience surface.
+   - Tail logs with `make logs` or focus on a single service via `make logs SERVICE=orchestrator`.
 
-```bash
-# Restart specific service
-make restart-service SERVICE=orchestrator
+4. **Shut down / clean up**
 
-# View logs for specific service
-make logs-service SERVICE=intent-graph
-
-# Get shell in service container
-make shell SERVICE=context-graph
-
-# Execute command in service
-make exec SERVICE=auth CMD="env | grep SERVICE"
-```
-
-### Development Workflow
-
-```bash
-# Run integration tests
-make test-int
-
-# Run unit tests
-make test-unit
-
-# Validate service contracts
-make validate
-
-# Pin exact image versions
-make pin
-
-# Run security scans
-make security-scan
-```
+   - `make down` stops the stack.
+   - `make clean` prunes containers, volumes, and cached images if something becomes corrupted.
 
 ---
 
-## 🎯 Verify Your Installation
+## 3. Work on a Specific Service
 
-### Health Check
+1. **Navigate to the service directory**
 
-```bash
-make health
-```
+   ```bash
+   cd unison-orchestrator
+   ```
 
-Expected output:
-```
-🏥 Unison Platform - Health Check
-================================
+2. **Install dependencies (when needed)**
 
-✅ Intent Graph: Healthy
-✅ Context Graph: Healthy  
-✅ Experience Renderer: Healthy
-✅ Orchestrator: Healthy
-✅ All 15+ services operational
-🎉 All systems are healthy!
-```
+   ```bash
+   uv pip install -r requirements-dev.txt
+   ```
 
-### Test Service Endpoints
+   Each service keeps its own `requirements*.txt` or `pyproject.toml`. Use the same Python version listed in
+   `constraints.txt`.
 
-```bash
-# Test orchestrator
-curl http://localhost:8090/health
+3. **Run service-local commands**
 
-# Test intent graph
-curl http://localhost:8080/health
+   ```bash
+   make format
+   make test-unit
+   make test-int
+   ```
 
-# Test context graph
-curl http://localhost:8091/health
+4. **Hot reload alongside the platform**
 
-# Test experience renderer
-curl http://localhost:8092/health
-```
+   - Keep the devstack running from the repo root (`make up`).
+   - Use `make dev-service` (when available) or `uvicorn src.main:app --reload` per service to iterate quickly.
 
-### Access Web Interfaces
+5. **Sync configuration**
 
-- **Jaeger Tracing**: http://localhost:16686 (if observability enabled)
-- **Prometheus Metrics**: http://localhost:9090 (if observability enabled)
-- **Grafana Dashboards**: http://localhost:3000 (if observability enabled)
+   - Typed settings live in each service’s `settings.py`.
+   - When you add or rename env vars, update `.env.template`, `.env.prod.template`, and the service README plus the docs
+     listed in `DOCUMENTATION_UPDATE_PLAN.md`.
 
 ---
 
-## 🔧 Configuration
+## 4. Everyday Commands Reference
 
-### Environment Variables
+- `make up` — bring up the default compose stack defined in `unison-platform/compose/compose.yaml`.
+- `make dev` — start a developer-focused bundle with hot reload and verbose logging enabled.
+- `make health` — confirm every service’s `/ready` probe is green (mirrors the Devstack health view).
+- `make logs` — tail all logs; pipe through `rg` or `fzf` when hunting for errors.
+- `make logs SERVICE=<name>` — follow a single service using the names shown in the Devstack UI.
+- `make restart SERVICE=<name>` — recycle one container without taking down the rest of the stack.
+- `make test` — run the aggregated unit + integration suites that CI executes by default.
+- `make test-contracts` — run schema + envelope validation against `unison-common`.
+- `make down` — stop the stack while leaving volumes intact.
 
-Key configuration options in `.env`:
-
-```bash
-# Platform Configuration
-UNISON_ENV=development
-LOG_LEVEL=info
-
-# Database
-POSTGRES_HOST=postgres
-POSTGRES_DB=unison
-POSTGRES_USER=unison
-POSTGRES_PASSWORD=unison_password
-
-# Cache & Messaging
-REDIS_HOST=redis
-NATS_HOST=nats
-
-# Inference
-UNISON_INFERENCE_PROVIDER=ollama
-UNISON_INFERENCE_MODEL=llama3.2
-```
-
-### Service Ports
-
-All services are accessible on localhost:
-
-| Service | Port | Description |
-|---------|------|-------------|
-| Orchestrator | 8090 | Main intent orchestration |
-| Intent Graph | 8080 | Intent processing |
-| Context Graph | 8091 | Context management |
-| Experience Renderer | 8092 | UI generation |
-| Agent VDI | 8093 | Virtual display |
-| Auth Service | 8083 | Authentication |
-| Context Service | 8081 | Context management |
-| I/O Speech | 8084 | Speech processing |
-| I/O Vision | 8086 | Vision processing |
-| I/O Core | 8085 | I/O coordination |
-| Inference | 8087 | ML inference |
-| Storage | 8082 | Data persistence |
+Run `make help` from the repo root for a full command list. Service directories often expose their own make targets; check
+each README for specifics.
 
 ---
 
-## 🧪 Testing Your Setup
+## 5. Testing & CI Parity
 
-### Basic Intent Processing
+- **Unit tests:** `make test-unit` inside a service folder. CI runs these through `.github/workflows/tests.yml` for each
+  repo.
+- **Integration tests:** `make test-int` at the root executes platform-level flows (intent orchestration, consent,
+  tracing). Use `pytest -k <pattern>` inside the relevant suite for faster iteration.
+- **Contract tests:** `make test-contracts` or `make validate` run the same checks as
+  `.github/workflows/contract-testing*.yml`.
+- **Docs lint:** `cd unison-docs && npm run lint:docs` mirrors `docs-lint.yml` (markdownlint, remark, misspell).
+- **Smoke tests:** `make test-smoke` exercises the Devstack after a fresh boot; the CI equivalent is
+  `unison-devstack/.github/workflows/e2e-smoke.yml`.
 
-```bash
-curl -X POST http://localhost:8090/intent/process \
-  -H "Content-Type: application/json" \
-  -d '{
-    "person_id": "test-user-001",
-    "expression": "Schedule a team meeting for tomorrow at 2pm",
-    "context": {
-      "timezone": "UTC"
-    }
-  }'
-```
-
-### Context Management
-
-```bash
-curl -X POST http://localhost:8091/context/update/test-user-001 \
-  -H "Content-Type: application/json" \
-  -d '{
-    "context_type": "user",
-    "context_data": {
-      "preferences": {
-        "meeting_duration": "30min",
-        "notification_level": "normal"
-      }
-    }
-  }'
-```
-
-### Experience Generation
-
-```bash
-curl -X POST http://localhost:8092/experience/generate \
-  -H "Content-Type: application/json" \
-  -d '{
-    "person_id": "test-user-001",
-    "intent_data": {
-      "type": "schedule_meeting",
-      "parameters": {
-        "time": "2pm tomorrow",
-        "attendees": "team"
-      }
-    },
-    "context_data": {
-      "device": "desktop"
-    },
-    "experience_type": "ui"
-  }'
-```
+Match CI as closely as possible before opening a PR to avoid long feedback cycles.
 
 ---
 
-## 🔍 Troubleshooting
+## 6. Observability & Troubleshooting
 
-### Common Issues
-
-#### Services Won't Start
-```bash
-# Check service status
-make status
-
-# View logs for problematic service
-make logs-service SERVICE=orchestrator
-
-# Check for port conflicts
-netstat -tulpn | grep :8080
-
-# Restart everything
-make down && make up
-```
-
-#### Docker Issues
-```bash
-# Check Docker is running
-docker info
-
-# Check resource usage
-docker stats
-
-# Clean up if needed
-make clean
-```
-
-#### Health Check Failures
-```bash
-# Detailed health check
-make health
-
-# Check individual service
-curl http://localhost:8080/health
-
-# View service logs
-make logs-service SERVICE=intent-graph
-```
-
-### Getting Help
-
-```bash
-# Show all available commands
-make help
-
-# Get diagnostic information
-make status > diagnostic.txt
-docker version >> diagnostic.txt
-docker-compose version >> diagnostic.txt
-```
+- **Dashboards:** `http://localhost:3000` provides health, logs, and scenario shortcuts. Observability bundles start via
+  `make observability`.
+- **Tracing:** OTEL collector config lives in `otel-collector-config.yaml`. Use `make up-tracing` (if defined) to start
+  Jaeger/Tempo locally.
+- **Metrics:** Prometheus + Grafana assets reside in `unison-devstack/config/prometheus.yml` and
+  `unison-devstack/grafana/`. Include them when debugging performance regressions.
+- **Common fixes:**
+  - Ports in use → `make down && make clean`, or free the port manually.
+  - Container crash loops → inspect `docker logs <container>` and check environment variables.
+  - Dependency drift → re-run `uv pip sync` (per service) or `make bootstrap` if available.
+- **Diagnostics:** Capture `make status`, `docker ps`, and relevant log snippets before asking for help in
+  `#docs-refresh` or filing an issue.
 
 ---
 
-## 🎚️ Development Profiles
+## 7. Next Steps & References
 
-### Development Profile
-```bash
-make dev
-```
-- Enables hot reload
-- Shows debug logs
-- Includes development tools
+1. **Understand the architecture:** Read [`developer/architecture.md`](./architecture.md) and
+   [`developer/platform-overview.md`](./platform-overview.md) for the mental model that matches the service map.
+2. **Follow the workflow:** [`developer/development-workflow.md`](./development-workflow.md) dives deeper into lifecycle,
+   testing, and deployment practices.
+3. **Explore people-facing docs:** Skim [`people/quick-start.md`](../people/quick-start.md) and
+   [`people/people-guide.md`](../people/people-guide.md) so the experience you build matches what people see.
+4. **Keep docs in sync:** Use `DOCUMENTATION_UPDATE_PLAN.md` and record changes in `DOCUMENTATION_UPDATE_SUMMARY.md` with
+   every PR.
 
-### Production Profile
-```bash
-make prod
-```
-- Optimized for performance
-- Production logging levels
-- Security hardening
-
-### Observability Profile
-```bash
-make observability
-```
-- Includes monitoring stack
-- Jaeger tracing enabled
-- Prometheus + Grafana dashboards
-
----
-
-## 📚 Next Steps
-
-### 1. **Explore the Architecture**
-- Read [Platform Overview](platform-overview.md)
-- Understand [Domain Organization](platform-overview.md#domain-organization)
-- Learn about [Service Contracts](../specs/unison-spec/)
-
-### 2. **Development Workflow**
-- Read [Development Workflow](development-workflow.md)
-- Set up [Local Development](development-workflow.md#local-development)
-- Learn about [Testing](development-workflow.md#testing)
-
-### 3. **Build Something**
-- Create a [Custom Skill](../tutorials/creating-skills.md)
-- Integrate with [External APIs](../tutorials/external-integrations.md)
-- Deploy to [Production](deployment/README.md)
-
-### 4. **Join the Community**
-- GitHub Discussions: https://github.com/project-unisonos/unison-platform/discussions
-- Report Issues: https://github.com/project-unisonos/unison-platform/issues
-- Contributing Guide: [CONTRIBUTING.md](../CONTRIBUTING.md)
-
----
-
-## 🎉 Congratulations!
-
-You now have the **complete Unison Platform** running with:
-
-- ✅ **15+ interconnected services** operational
-- ✅ **One-command management** via Makefile
-- ✅ **Health monitoring** and logging
-- ✅ **Development tools** and testing
-- ✅ **Enterprise-grade security** and observability
-- ✅ **Ready for development** and production
-
-**What's next?**
-- Try the examples above
-- Read the [Platform Overview](platform-overview.md)
-- Explore [Development Workflow](development-workflow.md)
-- Check [Deployment Options](deployment/README.md)
-
-Happy building! 🚀
-
----
-
-**🔗 Quick Links**
-- [Platform Overview](platform-overview.md)
-- [Development Workflow](development-workflow.md)
-- [API Reference](api-reference/README.md)
-- [Deployment Guide](deployment/README.md)
-- [Troubleshooting](troubleshooting.md)
+By keeping this guide current, anyone joining the project—or revisiting it after a gap—can spin up the platform, develop
+confidently, and publish changes directly into the upcoming GitHub Pages site. Thanks for helping keep the loop tight.

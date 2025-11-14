@@ -40,3 +40,9 @@ jobs:
       - name: Run remark
         run: |
           npm run lint:remark
+
+      - name: Run misspell
+        run: |
+          curl -sSL https://github.com/client9/misspell/releases/latest/download/misspell_linux_amd64 -o misspell
+          chmod +x misspell
+          ./misspell -error $(git ls-files '*.md')
