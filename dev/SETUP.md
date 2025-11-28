@@ -22,13 +22,13 @@ cd unison-devstack
 ```
 
 Recommended core repos to clone locally:
-- `unison-spec`
 - `unison-orchestrator`
 - `unison-context`
 - `unison-storage`
 - `unison-devstack`
 - `unison-policy`
 - `unison-auth`
+- `unison-docs`
 - `unison-common`
 
 Keep all under a shared parent folder, e.g.:
@@ -36,7 +36,7 @@ Keep all under a shared parent folder, e.g.:
 /git/unison/
 ```
 
-Workspace docs live at the root `docs/` directory; `unison-docs` is archived.
+Workspace docs and specs live in `unison-docs/dev/`; service-specific details stay in each repo README.
 
 ---
 

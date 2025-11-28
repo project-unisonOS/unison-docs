@@ -4,5 +4,7 @@ Developer-facing docs for the Unison workspace.
 
 Contents:
 - `specs/` — protocol specs and schemas (incl. `schemas/`).
-- Architecture and safety: `architecture.md`, `safety.md`, `accessibility.md`, `compatibility-matrix.md`.
+- Architecture: `unison-architecture-overview.md` (short) and `unison-architecture-deep-dive.md`.
+- Safety/accessibility/compatibility: `safety.md`, `accessibility.md`, `compatibility-matrix.md`.
 - Setup and constraints: `SETUP.md`, `constraints.txt`.
+- Workflow guides: `developer-guide.md`, `unison-repo-map.md`, `hardware-deployment-guide.md`.

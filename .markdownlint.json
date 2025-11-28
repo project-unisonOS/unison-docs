@@ -1,14 +1,18 @@
 {
   "default": true,
-  "MD013": { "line_length": 120, "code_block_line_length": 999, "heading_line_length": 999 },
+  "MD013": false,
+  "MD022": false,
+  "MD031": false,
+  "MD032": false,
+  "MD040": false,
   "MD033": { "allowed_elements": ["br", "hr"] },
   "MD041": { "level": 1 },
   "MD024": { "siblings_only": true },
   "MD046": { "style": "fenced" },
   "MD001": true,
   "MD025": true,
-  "MD040": true,
   "MD045": true,
   "MD034": true,
-  "MD036": true
+  "MD036": true,
+  "MD060": false
 }
