@@ -24,7 +24,6 @@ Single view of the Unison workspace. Repos live side-by-side in this directory; 
 | `unison-docs` | Canonical cross-cutting docs and specs (schemas live in `dev/specs/`). | Core docs | Markdown/JSON | `dev/` for developer docs, `dev/specs/` for schemas. |
 | `unison-common` | Shared Python library (auth/tracing/http/idempotency). | Core library | Python | README; tests via `python -m pytest`. |
 | `unison-os` | Base container image definitions for services. | Supporting infra | Docker | README; build via Dockerfile. |
-| `unison-context-graph.upstream` | Upstream reference snapshot for context-graph (for comparison). | Archived reference | Python / FastAPI | `unison-context-graph/README.md`; not part of devstack. |
 
 See `developer-guide.md` for the end-to-end workflow and `../../docs/dx-hygiene-plan.md` for open DX issues and follow-ups.
 For interaction flows between services, see `unison-architecture-overview.md` and `unison-architecture-deep-dive.md`.
