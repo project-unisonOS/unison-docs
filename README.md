@@ -1,12 +1,15 @@
-# Unison Docs (Archived)
+# Unison Docs
 
-This repo is no longer the primary documentation hub. Legacy content has been removed to avoid drift and duplication.
-Use the workspace-level docs instead:
+Canonical workspace documentation. This repo now hosts:
 
-- `../docs/developer-guide.md` — authoritative developer workflow (clone → devstack → renderer → tests).
-- `../docs/unison-repo-map.md` — current inventory of repos, roles, and statuses.
-- `../docs/dx-hygiene-plan.md` — open cleanup items and TODOs.
-- Service-level READMEs inside each repo for API- and code-specific details.
+- Workspace-wide guides and DX notes.
+- Specifications and schemas migrated from the former `unison-spec` repo (see `specs/`).
 
-If you still need historical docs, use git history for this repo. New docs should live alongside code in the relevant
-service or under `../docs/`.
+## Quick pointers
+- Specs & schemas index: `specs/README.md`
+- Constraints for consistent installs: `constraints.txt`
+
+## Layout
+- `specs/` — specs, schemas, and meta-docs for the platform.
+
+Per-service details remain in their respective repos; use this repo for cross-cutting docs.
