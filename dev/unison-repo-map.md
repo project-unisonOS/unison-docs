@@ -22,6 +22,7 @@ Single view of the Unison workspace. Repos live side-by-side in this directory; 
 | `unison-devstack` | Docker Compose stack + helper scripts for local e2e. | Core DX | Docker Compose + Python helper scripts | `docker-compose.yml`; README/SETUP; smoke test `python scripts/e2e_smoke.py`. |
 | `unison-platform` | Narrative/platform-level docs + installer entrypoints. | Core docs | Markdown | README; keep architecture notes co-located with code. |
 | `unison-docs` | Canonical cross-cutting docs and specs (schemas live in `dev/specs/`). | Core docs | Markdown/JSON | `dev/` for developer docs, `dev/specs/` for schemas. |
+| `unison-payments` | Standalone payments service (instruments, transactions, webhooks). | Optional (payments) | Python / FastAPI | `src/payments/server.py`; README; tests via `python -m pytest`. |
 | `unison-common` | Shared Python library (auth/tracing/http/idempotency). | Core library | Python | README; tests via `python -m pytest`. |
 | `unison-os` | Base container image definitions for services. | Supporting infra | Docker | README; build via Dockerfile. |
 

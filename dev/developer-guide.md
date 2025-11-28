@@ -20,7 +20,7 @@ for repo in \
   unison-auth unison-consent unison-inference unison-intent-graph unison-context-graph \
   unison-experience-renderer unison-agent-vdi \
   unison-io-core unison-io-speech unison-io-vision \
-  unison-common unison-platform unison-shell unison-os unison-docs; do
+  unison-common unison-platform unison-shell unison-os unison-docs unison-payments; do
   git clone git@github.com:project-unisonos/$repo.git
 done
 ```
