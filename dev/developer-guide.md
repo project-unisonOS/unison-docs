@@ -98,6 +98,12 @@ npm start
 
 ## Running Unison via Docker
 
+- Build speed tip: build or pull the shared `unison-common` wheel once so all Python services reuse it:
+  ```bash
+  docker build -f unison-common/Dockerfile.wheel -t ghcr.io/project-unisonos/unison-common-wheel:latest unison-common
+  # or docker pull ghcr.io/project-unisonos/unison-common-wheel:latest
+  docker compose build
+  ```
 - Primary path is `docker compose up -d --build` in `unison-devstack`.
 - To rebuild a single service: `docker compose build orchestrator` then `docker compose up orchestrator`.
 - To include optional tools (Ollama, skill registration): `docker compose --profile tools up -d`.
