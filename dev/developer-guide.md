@@ -11,6 +11,22 @@ Opinionated path from clone to a running local stack (devstack + renderer) plus 
 
 ## Clone / Workspace Layout
 
+### Recommended: Single Clone (Meta Repo)
+
+Use the meta repo to get the full workspace in one step:
+
+```bash
+git clone git@github.com:project-unisonos/unison-workspace.git
+cd unison-workspace
+git submodule update --init --recursive
+./scripts/up.sh          # start devstack
+./scripts/smoke.sh       # run E2E smoke
+```
+
+See `unison-workspace/docs/developer-guide.md` for more details and repo map.
+
+### Alternative: Individual Clones
+
 Clone the repos side-by-side under a common parent:
 
 ```bash
