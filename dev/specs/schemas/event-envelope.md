@@ -20,6 +20,36 @@ The EventEnvelope v2.0 schema extends the original message format to support Uni
 }
 ```
 
+### Capability Report Event (example)
+
+Use the same envelope shape to report detected peripherals at startup (see `../../startup-modality.md`):
+
+```json
+{
+  "schema_version": "2.0",
+  "id": "uuid-v4",
+  "timestamp": "2025-01-01T00:00:00Z",
+  "source": "io-core",
+  "event_type": "caps.report",
+  "correlation_id": "uuid-v4",
+  "payload": {
+    "person_id": "local-user",
+    "caps": {
+      "audio_in": {"present": true, "confidence": 0.9},
+      "audio_out": {"present": true, "confidence": 0.9},
+      "display": {"present": true, "confidence": 0.8},
+      "camera": {"present": false},
+      "sign_adapter": {"present": false},
+      "bci_adapter": {"present": false},
+      "wakeword": {"present": true},
+      "locale_hint": "en-US"
+    }
+  }
+}
+```
+
+This event primes the orchestrator/intent-graph with available modalities so the initial prompt can branch to voice-only or display+voice flows.
+
 ### Intent Orchestration Extension
 
 ```json
