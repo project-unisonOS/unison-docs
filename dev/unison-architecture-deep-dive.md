@@ -38,8 +38,30 @@ Detailed view of the control plane, experience surfaces, data stores, and runtim
    - Writes updated state back through **unison-context**/**unison-storage** as needed.
 4. Response is returned to the originating client (renderer/shell/VDI/I/O stub) to render UI or produce speech/vision outputs.
 
+## Companion session flow (voice, alpha)
+
+The Natural Multimodal Companion builds on the core request flow to support voice-first interactions:
+
+1. **Speech input** — `unison-io-speech` receives audio and produces a transcript via `/speech/stt`.
+2. **Voice ingest** — The transcript (plus `person_id` and `session_id`) is POSTed to `unison-orchestrator` at `/voice/ingest`.
+3. **Companion turn** — The voice API wraps the request as a `companion.turn` envelope and delegates to `CompanionSessionManager`:
+   - Loads recent conversation state from **unison-context**.
+   - Builds LLM messages and tool schemas from the registry.
+   - Calls **unison-inference** with tools enabled; attachments (e.g., images) trigger the multimodal model preset.
+   - Executes any selected tools (native skills or MCP tools).
+   - Stores the updated turn back into **unison-context**.
+4. **Outputs and logging** — The companion manager:
+   - Emits a best-effort TTS request to `unison-io-speech` and an experience payload to the renderer.
+   - Logs conversation summaries and tool activity into **unison-context-graph** for later retrieval and analysis.
+
+This flow is exercised in devstack by combining `unison-io-speech` with the orchestrator `/voice/ingest` endpoint and the multimodal inference gateway.
+
 ## Data and secrets
 - Long-term and sensitive data live in **unison-storage**; transient session/graph data is managed by **unison-context** and **unison-context-graph**.
+- **Profiles** are stored by **unison-context** in an encrypted-at-rest SQLite table (`person_profiles`) with an optional Fernet key (`UNISON_CONTEXT_PROFILE_KEY`); profile CRUD endpoints require consent scopes and admin/operator/service roles and are used by orchestrator skills such as `person.enroll` and `person.update_prefs`.
+- **Context graph durability** is implemented via a shared `DurabilityManager` used by **unison-context-graph**:
+  - Durability endpoints: `GET /durability/status`, `POST /durability/run_ttl`, `POST /durability/run_pii`, and `GET /metrics`.
+  - Features: WAL mode, TTL cleanup, PII scrubbing, and recovery checks for the replay store.
 - JWT secrets, encryption keys, and provider tokens are injected via `.env` files or Compose overrides; see `dev/developer-guide.md` and service READMEs for env expectations.
 
 ## Where to start

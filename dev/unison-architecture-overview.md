@@ -54,6 +54,12 @@ and commands.
 
 - Long-term and sensitive data live in **unison-storage**; transient session/graph data is managed by **unison-context**
   and **unison-context-graph**.
+- **Profiles** are stored in **unison-context** in an encrypted-at-rest table (`person_profiles`) with optional Fernet
+  keys; profile APIs enforce consent scopes and role checks, and are used by orchestrator skills for enrollment and
+  preference updates.
+- **Context Graph durability** is provided by a shared `DurabilityManager`, exposing `/durability/status`,
+  `/durability/run_ttl`, `/durability/run_pii`, and `/metrics` so replay, TTL, and PII scrubbing can be monitored and
+  controlled explicitly.
 - JWT secrets, encryption keys, and provider tokens are injected via `.env` files or Compose overrides; see each service
   README and `developer-guide.md` for env expectations.
 
