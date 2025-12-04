@@ -50,6 +50,45 @@ Use the same envelope shape to report detected peripherals at startup (see `../.
 
 This event primes the orchestrator/intent-graph with available modalities so the initial prompt can branch to voice-only or display+voice flows.
 
+### BCI Intent Event (example)
+
+BCI-derived intents carry decoder metadata, confidence, and optional continuous axes. They use the standard envelope fields plus a `bci.intent` event type:
+
+```json
+{
+  "schema_version": "2.0",
+  "id": "uuid-v4",
+  "timestamp": "2025-01-01T00:00:01Z",
+  "source": "unison-io-bci",
+  "event_type": "bci.intent",
+  "correlation_id": "uuid-v4",
+  "intent": {
+    "type": "input.command",
+    "command": "click",
+    "axes": {"dx": 0.0, "dy": 0.0},
+    "mode": "discrete",
+    "confidence": 0.83,
+    "latency_ms": 45,
+    "decoder": {"name": "ssvep_v1", "version": "1.0.0"}
+  },
+  "person": {
+    "id": "person-123",
+    "session_id": "session-456"
+  },
+  "context": {
+    "interaction": "navigation",
+    "fusion_state": {"gaze_target": "btn-1"}
+  },
+  "auth_scope": "bci.intent.subscribe",
+  "metadata": {
+    "source_stream": "lsl:device-123",
+    "confidence_threshold_met": true
+  }
+}
+```
+
+Fusion logic in `unison-intent-graph` may wrap this as `input.fused` before handing off to the orchestrator.
+
 ### Intent Orchestration Extension
 
 ```json
@@ -260,6 +299,8 @@ This event primes the orchestrator/intent-graph with available modalities so the
 - `communication.sent` - Message sent via UMP
 - `communication.delivered` - Message successfully delivered
 - `communication.responded` - Response received from recipient
+- `bci.intent` - Decoder-produced neural intent (discrete or continuous)
+- `input.fused` - Fusion output that combines modalities (e.g., gaze + BCI confirm)
 
 ## Service-Specific Extensions
 

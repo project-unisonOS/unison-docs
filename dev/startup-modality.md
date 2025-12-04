@@ -1,6 +1,6 @@
 # Startup Modality and Language Plan
 
-Objective: provide a consistent startup experience that detects available modalities (audio/display/camera/Adapters), picks the right prompting path (conversation-only vs display + conversation), and defaults to a local multimodal model. The design must stay extensible for sign language and brain-computer interface (BCI) inputs at first contact.
+Objective: provide a consistent startup experience that detects available modalities (audio/display/camera/Adapters), picks the right prompting path (conversation-only vs display + conversation), and defaults to a local multimodal model. The design must stay extensible for sign language and brain-computer interface (BCI) inputs at first contact; if a BCI adapter is present, offer a non-blocking attach/calibrate option during startup.
 
 ## Existing Capabilities
 - IO stubs: `unison-io-speech` (STT/TTS stub), `unison-io-vision` (vision stub), `unison-io-core` (event emitter).
@@ -10,11 +10,11 @@ Objective: provide a consistent startup experience that detects available modali
 
 ## State Machine (startup)
 - `BOOT`: start core services; inference loads the default local multimodal model and reports readiness.
-- `DISCOVER_CAPS`: IO layer enumerates peripherals (audio in/out, display, camera, optional sign/bci adapters) and emits `caps.report` to intent-graph/orchestrator.
+- `DISCOVER_CAPS`: IO layer enumerates peripherals (audio in/out, display, camera, optional sign/bci adapters) and emits `caps.report` to intent-graph/orchestrator. When `bci_adapter` is present, intent-graph/renderer can surface a lightweight prompt to attach/pair and start calibration without blocking the main greeting.
 - `LANG_PREF`: resolve language in order: stored profile locale (context/storage) → OS/device locale hint → multilingual greeting request.
 - `PROMPT`: deliver initial prompt according to detected mode:
   - Conversation-only: play/stream TTS greeting and listen; no UI.
-  - Display + conversation: render a minimal language card plus simultaneous voice prompt; keep mic open.
+  - Display + conversation: render a minimal language card plus simultaneous voice prompt; keep mic open. If BCI is present, show an optional “Connect BCI” card that can be deferred.
 - `SESSION_READY`: set ASR/TTS locale, wake-word, and proceed to normal intent flow.
 - Failure/timeouts: fall back to “I can hear you; tell me your language” and log missing device/locale.
 
@@ -52,7 +52,7 @@ Store this in context (KV) for downstream services and renderer to branch UI/voi
 
 ## Extensibility
 - Sign language: treat sign recognition as another adapter surfaced in `caps.report`; when present, renderer/vision can offer a visual card and accept gesture input. Sign synthesis can be added as an output path later.
-- BCI: treat as another input channel publishing intents; `caps.report` flags presence so prompts avoid unavailable channels.
+- BCI: treat as another input channel publishing intents; `caps.report` flags presence so prompts avoid unavailable channels. If present, renderer offers optional attach + quick calibration in parallel with the greeting and records BCI availability in context for later fusion.
 
 ## First Implementation Slice (to avoid duplication)
 1. Define `caps.report` contract in docs (this file) and align with `dev/specs/event-envelope` before adding code.

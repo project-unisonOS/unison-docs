@@ -18,6 +18,7 @@ Single view of the Unison workspace. Repos live side-by-side in this directory; 
 | `unison-io-core` | On-device multimodal runtime stub forwarding envelopes. | Optional (dev-mode) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |
 | `unison-io-speech` | Speech I/O stub (STT/TTS) emitting envelopes. | Optional (dev-mode) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |
 | `unison-io-vision` | Vision I/O stub emitting envelopes. | Optional (dev-mode) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |
+| `unison-io-bci` | Planned BCI ingest/decoder service emitting `bci.intent` and HID mappings. | Planned (dev) | Python / FastAPI | README (MVP WIP). |
 | `unison-shell` | Electron developer shell for quick onboarding + echo flows. | Optional (dev-mode) | Node / Electron | `npm start`; smoke test `npm test`. |
 | `unison-devstack` | Docker Compose stack + helper scripts for local e2e. | Core DX | Docker Compose + Python helper scripts | `docker-compose.yml`; README/SETUP; smoke test `python scripts/e2e_smoke.py`. |
 | `unison-platform` | Narrative/platform-level docs + installer entrypoints. | Core docs | Markdown | README; keep architecture notes co-located with code. |
