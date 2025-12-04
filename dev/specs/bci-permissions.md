@@ -17,7 +17,7 @@ BCI data is sensitive. These scopes, enforced through `unison-auth`, `unison-con
 - Raw and export paths are opt-in and off by default; model/profile cloud sync must be explicitly opted in.
 
 ## Service expectations
-- **BCI service (`unison-io-bci`)**: enforce scopes on `WS /bci/raw`, `WS /bci/intents`, device attach/pair, export, and HID map endpoints.
+- **BCI service (`unison-io-bci`)**: enforce scopes on `WS /bci/raw`, `WS /bci/intents`, device attach/pair, export, and HID map endpoints; `/bci/decoders` is read-only.
 - **Intent graph**: accept `bci.intent` envelopes and propagate `auth_scope` for downstream checks; fuse with other modalities to `input.fused`.
 - **Orchestrator/policy**: treat `bci.intent` and `input.fused` like other input, applying policy + consent before acting.
 - **Renderer/UX**: display active BCI indicator and access log summary when BCI scopes are in use.

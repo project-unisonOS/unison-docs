@@ -300,6 +300,7 @@ Fusion logic in `unison-intent-graph` may wrap this as `input.fused` before hand
 - `communication.delivered` - Message successfully delivered
 - `communication.responded` - Response received from recipient
 - `bci.intent` - Decoder-produced neural intent (discrete or continuous)
+- `input.hid` - HID mapping emitted from BCI intent->HID layer
 - `input.fused` - Fusion output that combines modalities (e.g., gaze + BCI confirm)
 
 ## Service-Specific Extensions

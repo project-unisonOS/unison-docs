@@ -52,7 +52,7 @@ Store this in context (KV) for downstream services and renderer to branch UI/voi
 
 ## Extensibility
 - Sign language: treat sign recognition as another adapter surfaced in `caps.report`; when present, renderer/vision can offer a visual card and accept gesture input. Sign synthesis can be added as an output path later.
-- BCI: treat as another input channel publishing intents; `caps.report` flags presence so prompts avoid unavailable channels. If present, renderer offers optional attach + quick calibration in parallel with the greeting and records BCI availability in context for later fusion.
+- BCI: treat as another input channel publishing intents; `caps.report` flags presence so prompts avoid unavailable channels. If present, renderer offers optional attach + quick calibration in parallel with the greeting and records BCI availability in context for later fusion. `unison-io-bci` emits `caps.report` at startup with `bci_adapter` metadata.
 
 ## First Implementation Slice (to avoid duplication)
 1. Define `caps.report` contract in docs (this file) and align with `dev/specs/event-envelope` before adding code.

@@ -3,7 +3,7 @@
 BCI is a first-class input modality alongside keyboard, pointer, voice, gaze, and touch. This design anchors on current UnisonOS services (FastAPI microservices, EventEnvelope contracts, consent/policy/auth guards, and the intent-graph -> orchestrator pipeline).
 
 ## Current Baseline
-- Inputs: `unison-io-speech`, `unison-io-vision`, `unison-io-core` emit EventEnvelopes to `unison-orchestrator` (or via `unison-intent-graph`); capability reports already carry a `bci_adapter` flag.
+- Inputs: `unison-io-speech`, `unison-io-vision`, `unison-io-core`, `unison-io-bci` emit EventEnvelopes to `unison-orchestrator` (or via `unison-intent-graph`); capability reports already carry a `bci_adapter` flag.
 - Routing: `unison-intent-graph` normalizes/forwards; `unison-orchestrator` enforces auth/consent/policy, calls inference/context/storage, and returns responses via renderer/VDI.
 - Security/identity: JWT + RBAC (`unison-auth`); consent grants (`unison-consent`); policy/audit (`unison-policy`); profiles/KV (`unison-context`, encrypted at rest when key set); vault/working memory (`unison-storage`).
 - Contracts: EventEnvelope v2 (`dev/specs/schemas/event-envelope.md`), `caps.report` (`dev/startup-modality.md`); shared logging/tracing via `unison-common`.
@@ -44,6 +44,12 @@ BCI is a first-class input modality alongside keyboard, pointer, voice, gaze, an
 - **Profiles and calibration**: per-user BCI profile in `unison-context` (`/profile/{person_id}`) with devices, control scheme, thresholds, decoder params, mode, fatigue prompts; calibration/model artifacts stored in `unison-storage` vault (encrypted) with pointers from profile; device pairing secrets stay in vault.
 - **Security/privacy**: consent scopes `bci.raw.read`, `bci.intent.subscribe`, `bci.device.pair`, `bci.profile.manage`, `bci.export`, `bci.hid.map`; enforced via auth/consent/policy; raw data local-first; TLS and encrypted vault storage; cloud sync opt-in only.
 - **Adaptive UI Controller (`unison-experience-renderer`/VDI)**: BCI Control Mode (larger targets, scanning), mode indicators, confidence-driven highlights, undo; uses fusion confidence + fatigue metrics to adjust pacing.
+
+### MVP status (current)
+- Service: `unison-io-bci` with LSL ingest, BLE/serial detection + streaming stubs, per-device decoder selection (window/RMS), raw snapshots, XDF/EDF export, HID mapping, auth/consent middleware, and capability reports.
+- Scopes: `bci.intent.subscribe`, `bci.raw.read`, `bci.export`, `bci.hid.map`, `bci.device.pair`, `bci.profile.manage`.
+- Endpoints: health/ready/metrics, `/bci/devices{attach,get}`, `/bci/decoders`, `/bci/intents` (WS), `/bci/raw` (WS, stream/limit params), `/bci/export` (XDF/EDF), `/bci/hid-map`.
+- Device profiles: seeded Muse-S/Muse-2/OpenBCI profiles with notify UUIDs/parsers/channel labels/sample rates and decoder defaults; CSV/notify parsers feed samples into the decoder pipeline.
 
 ## Protocols and SDK Paths
 - **LSL**: discovery + subscribe; prompt to attach when EEG stream appears; use LSL time sync.
