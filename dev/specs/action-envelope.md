@@ -32,6 +32,7 @@ Validation rules:
 - **Use actuation** when an action changes physical state or high-impact digital state (IoT devices, robots, system automation, avatars/embodiments, browser or OS automation that clicks/types).
 - **Use renderer** for expressive/perceptual outputs (UI cards, speech/vision/sign/braille outputs); IO services (`unison-io-*`) should continue to emit EventEnvelopes for expression.
 - **Policy scopes**: actuation flows should request scopes such as `actuation.*`, `actuation.home.*`, `actuation.robot.*`, `actuation.desktop.*` and include `policy_context.consent_reference` when available.
+- **Renderer/IO handling**: renderer should surface confirmations, progress, and results from actuation telemetry; IO modules that physically change state (e.g., braille actuators, sign hardware) should route through actuation, while purely expressive outputs stay on renderer pathways.
 
 ## Confirmation and Telemetry
 - High-risk actions may return `requires_confirmation` and should surface a confirmation UX via renderer/context.
