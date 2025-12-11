@@ -33,6 +33,8 @@ This describes how UnisonOS repos align around a trunk-based workflow, semver, a
   - `ghcr.io/project-unisonos/unison-common-wheel:v0.4.0`
 - On push to `main`: push `:edge-main` (or date-stamped) images.
 - On tag `vX.Y.Z`: push `:vX.Y.Z` and, for platform, `:latest`.
+- Service repos should reuse `project-unisonOS/unison-platform/.github/workflows/reusable-build.yml@main` for consistent channel-aware tags (edge/beta/stable) and OCI labels.
+- Platform release workflow (`unison-platform/.github/workflows/release.yml`) packages WSL/VM/ISO artifacts and attaches them to GitHub Releases on `v*` tags.
 
 ## Contributor Workflow
 - External contributions:
