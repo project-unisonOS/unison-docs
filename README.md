@@ -10,6 +10,9 @@ Canonical workspace documentation. Navigation:
 - Specs & schemas: `dev/specs/` (e.g., `unified-messaging-protocol.md`, `event-envelope.schema.json`, `schemas/`).
 - Architecture: `dev/unison-architecture-overview.md` (high level) and `dev/unison-architecture-deep-dive.md`.
 - Developer workflows: `dev/developer-guide.md`, `dev/unison-repo-map.md`, `dev/hardware-deployment-guide.md`.
+- Repo roles: `dev/unison-repo-roles.md` (where to start for dev, deployment, or service work).
+- Releases & branching: `dev/release-and-branching.md`.
+- Platform roadmap: `roadmap/deployment-platform-roadmap.md`.
 - Safety/accessibility/compatibility: `dev/safety.md`, `dev/accessibility.md`, `dev/compatibility-matrix.md`.
 - Constraints & setup: `dev/constraints.txt`, `dev/SETUP.md`.
 - Policies: `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, `MAINTAINERS.md`, `SECURITY.md`.

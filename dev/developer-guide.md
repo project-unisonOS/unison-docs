@@ -112,6 +112,10 @@ npm start
 - Devstack smoke (requires compose running): `python scripts/e2e_smoke.py`
 - Docs lint: `npx --yes markdownlint-cli2` (uses workspace config at `.markdownlint-cli2.jsonc`)
 
+## Repo Roles and Releases
+- Where to work (dev vs platform vs services): `dev/unison-repo-roles.md`
+- Branching/tagging (trunk + release/x.y, semver, GHCR tags): `dev/release-and-branching.md`
+
 ## Running Unison via Docker
 
 - Build speed tip: build or pull the shared `unison-common` wheel once so all Python services reuse it:
