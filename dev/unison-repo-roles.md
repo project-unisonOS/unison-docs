@@ -13,14 +13,14 @@ Use this guide to choose the right repository for your task and to understand ho
 ## Service Repos (examples)
 - **Control plane**: `unison-orchestrator`, `unison-intent-graph`, `unison-context`, `unison-context-graph`, `unison-policy`, `unison-auth`, `unison-consent`.
 - **Inference**: `unison-inference`.
-- **Experience & shell**: `unison-experience-renderer`, `unison-agent-vdi`, `unison-shell`.
+- **Experience**: `unison-experience-renderer`, `unison-agent-vdi`.
 - **I/O services**: `unison-io-core`, `unison-io-speech`, `unison-io-vision`, plus modality adapters (BCI, Braille, Sign).
 - **Comms/actuation**: `unison-comms`, `unison-actuation`.
 - **Shared**: `unison-common`.
 
 ## Start Here Based on Your Goal
 - **“I want to test Unison locally.”** Clone `unison-workspace`, initialize submodules, and run `unison-devstack` via workspace scripts (`./scripts/up.sh`, `./scripts/smoke.sh`). Docs: `unison-docs/dev/developer-guide.md`.
-- **“I want to tweak the experience renderer or UI.”** Work in `unison-experience-renderer` (or `unison-shell`/`unison-agent-vdi`), then validate through `unison-devstack`.
+- **“I want to tweak the experience renderer.”** Work in `unison-experience-renderer` (or `unison-agent-vdi`), then validate through `unison-devstack`.
 - **“I want to modify inference logic/models.”** Work in `unison-inference` (provider logic, model selection), then run through `unison-devstack`; update platform manifests when tagging releases.
 - **“I want to work on deployment/images/installers.”** Use `unison-platform`:
   - `installer/` for curl|bash/native/WSL installers,

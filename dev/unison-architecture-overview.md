@@ -21,7 +21,6 @@ and commands.
 
 - **unison-experience-renderer** — renders experiences/UI and mediates wake-word UX. Sends intents to intent-graph and
   receives responses to display/speak.
-- **unison-shell** — Electron onboarding shell for local developer flows; proxies to renderer/intent-graph.
 - **unison-agent-vdi** — thin desktop/VDI agent that fronts renderer and intent-graph.
 - **unison-io-core / unison-io-speech / unison-io-vision** — device-side emitters of EventEnvelopes (speech/vision/IO)
   that the orchestrator consumes; useful for simulated edge devices in devstack.

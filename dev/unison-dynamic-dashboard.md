@@ -19,15 +19,9 @@ Status: design draft; core pieces are now implemented in `unison-context`, `unis
   - **Generated**, not navigated: experiences and cards appear as a result of interaction and planning, not as static app tiles.
   - **Evolving**: what you see on the surface changes as the conversation and context evolve.
 
-### Shell (unison-shell)
+### Developer workflows
 
-- Developer-facing Electron shell for local workflows.
-- Responsibilities:
-  - Onboarding and Tier B profile entry (e.g., language, preferences).
-  - Simple echo and intent testing against orchestrator.
-- The shell is **not** the primary Operating Surface; it is a dev tool that can:
-  - Launch or point to the renderer.
-  - Provide auxiliary debugging views during development (logs, traces, etc., in the future).
+Developer-only flows (onboarding/profile edits, sending test envelopes, confirmation exercises) should be exercised via documented API recipes and scripts rather than a separate UI surface.
 
 ---
 

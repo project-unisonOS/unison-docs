@@ -19,7 +19,6 @@ Single view of the Unison workspace. Repos live side-by-side in this directory; 
 | `unison-io-speech` | Speech I/O stub (STT/TTS) emitting envelopes. | Optional (dev-mode) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |
 | `unison-io-vision` | Vision I/O stub emitting envelopes. | Optional (dev-mode) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |
 | `unison-io-bci` | BCI ingest/decoder service (LSL/BLE/serial stubs, decoders, HID, raw snapshots, export). | Active (dev) | Python / FastAPI | `README`; endpoints `/bci/*`. |
-| `unison-shell` | Electron developer shell for quick onboarding + echo flows. | Optional (dev-mode) | Node / Electron | `npm start`; smoke test `npm test`. |
 | `unison-devstack` | Docker Compose stack + helper scripts for local e2e. | Core DX | Docker Compose + Python helper scripts | `docker-compose.yml`; README/SETUP; smoke test `python scripts/e2e_smoke.py`. |
 | `unison-platform` | Narrative/platform-level docs + installer entrypoints. | Core docs | Markdown | README; keep architecture notes co-located with code. |
 | `unison-docs` | Canonical cross-cutting docs and specs (schemas live in `dev/specs/`). | Core docs | Markdown/JSON | `dev/` for developer docs, `dev/specs/` for schemas. |
@@ -32,11 +31,11 @@ For interaction flows between services, see `unison-architecture-overview.md` an
 
 ## How the Pieces Interact (high level)
 
-- **Intent path**: UI (experience-renderer) and agents (shell, agent-vdi, io-core/speech/vision) send intents → `unison-intent-graph` → `unison-orchestrator` for routing.
+- **Intent path**: UI (experience-renderer) and agents (agent-vdi, io-core/speech/vision) send intents → `unison-intent-graph` → `unison-orchestrator` for routing.
 - **Context loop**: Orchestrator queries `unison-context-graph` for fused context; context-graph pulls/stores state via `unison-context` (profile/KV) and `unison-storage` (vault/long-term memory).
 - **Policy/safety**: Orchestrator calls `unison-policy` (and `unison-consent`) to enforce rules/consent before executing actions.
 - **Identity/auth**: Services validate JWTs via `unison-auth`; consent grants come from `unison-consent`.
 - **Inference**: Orchestrator (or intent-graph) calls `unison-inference` for LLM/model requests; inference may use local Ollama or cloud providers.
-- **I/O layer**: `unison-io-speech`, `unison-io-vision`, `unison-io-core` generate EventEnvelopes to the orchestrator; `unison-experience-renderer` returns responses to users via shell/VDI.
+- **I/O layer**: `unison-io-speech`, `unison-io-vision`, `unison-io-core` generate EventEnvelopes to the orchestrator; `unison-experience-renderer` returns responses to people via VDI/surfaces.
 - **Devstack wiring**: `unison-devstack` Docker Compose connects all services with Redis/Postgres and optional tools; `unison-os` provides the base image used by service Dockerfiles.
 - **Contracts/docs**: `unison-docs/dev/specs/` provides schemas consumed by services and `unison-common`; `unison-platform` holds platform notes. `unison-common` is imported by Python services for shared middleware.

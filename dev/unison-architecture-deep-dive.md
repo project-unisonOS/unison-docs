@@ -13,7 +13,6 @@ Detailed view of the control plane, experience surfaces, data stores, and runtim
 
 ## Experience and I/O surfaces
 - **unison-experience-renderer** — Renders UI/UX, mediates wake-word UX, and exchanges intents/responses with intent-graph.
-- **unison-shell** — Electron-based onboarding/dev shell; proxies to renderer/intent-graph for local flows.
 - **unison-agent-vdi** — Thin desktop/VDI agent that fronts renderer and intent-graph.
 - **unison-io-core / unison-io-speech / unison-io-vision** — Device-side emitters of `EventEnvelope` payloads; simulate or mirror edge devices in devstack.
 
@@ -29,14 +28,14 @@ Detailed view of the control plane, experience surfaces, data stores, and runtim
 - Service Dockerfiles pull the packaged `unison-common` and the schemas from `unison-docs/dev/specs/` rather than duplicating copies.
 
 ## Typical request flow (expanded)
-1. Client (renderer, shell, VDI, or I/O stub) emits an **EventEnvelope** defined in `unison-docs/dev/specs/event-envelope.md`.
+1. Client (renderer, VDI, or I/O stub) emits an **EventEnvelope** defined in `unison-docs/dev/specs/event-envelope.md`.
 2. **unison-intent-graph** normalizes/expands the intent and forwards it to **unison-orchestrator**.
 3. Orchestrator steps:
    - Authenticates via **unison-auth** and checks consent/policy via **unison-policy**/**unison-consent**.
    - Retrieves fused state from **unison-context-graph** and profile/KV data from **unison-context**/**unison-storage**.
    - Calls **unison-inference** for LLM/model calls when needed.
    - Writes updated state back through **unison-context**/**unison-storage** as needed.
-4. Response is returned to the originating client (renderer/shell/VDI/I/O stub) to render UI or produce speech/vision outputs.
+4. Response is returned to the originating client (renderer/VDI/I/O stub) to render UI or produce speech/vision outputs.
 
 ## Companion session flow (voice, alpha)
 
