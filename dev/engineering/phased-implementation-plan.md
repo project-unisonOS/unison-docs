@@ -113,6 +113,10 @@ Trace artifact writer will live in:
 - Denied actions are represented in ROM with explicit reasons.
 - Context updates are queued and flushed asynchronously with trace coverage.
 
+**Current implementation (completed)**
+- `unison-common`: `ContextSnapshot` contract (`unison_common.contracts.v1`).
+- `unison-orchestrator`: `ContextReader` (profile+dashboard), `PolicyGate` calling `unison-policy /evaluate` when `ServiceClients` available, and `ContextWriteBehindQueue` flushing `kv.put` updates into `unison-context` with trace spans.
+
 ### Phase 3 — Event Graph append-only + replay tooling
 
 **Objective**
