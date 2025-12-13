@@ -129,6 +129,12 @@ Trace artifact writer will live in:
 **Acceptance criteria**
 - A trace can be replayed into an ordered event timeline.
 
+**Current implementation (completed)**
+- `unison-common`: `EventGraphEvent`/`EventGraphAppend`/`EventGraphQuery` contracts (`unison_common.contracts.v1`).
+- `unison-orchestrator`: append-only JSONL store (`orchestrator.event_graph.JsonlEventGraphStore`) and event helper (`orchestrator.event_graph.store.new_event`).
+- `unison-orchestrator`: thin slice appends Event Graph events (`orchestrator.dev_thin_slice`).
+- `unison-orchestrator`: replay tool script `scripts/event_graph_replay.py` and optional API routes (enable with `UNISON_ENABLE_EVENT_GRAPH_ROUTES=true`).
+
 ### Phase 4 — IO modality pipeline (speech first)
 
 **Objective**

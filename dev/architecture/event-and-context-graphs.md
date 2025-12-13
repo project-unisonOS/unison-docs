@@ -68,6 +68,10 @@ Both exist to serve different queries and retention models.
 - Default location: `traces/` (or env-configured path).
 - Encryption hook: interface for encrypt-at-rest, initially no-op.
 
+Current Phase 3 implementation:
+- The Event Graph is implemented as an append-only JSONL store in `unison-orchestrator` (config: `UNISON_EVENT_GRAPH_DIR`, `UNISON_EVENT_GRAPH_FILE`).
+- Thin-slice interactions append structured `EventGraphEvent` records; replay tooling is provided via `unison-orchestrator/scripts/event_graph_replay.py`.
+
 ### Context Graph (current workspace reality)
 
 The repo already has a `unison-context-graph` service with a replay store (SQLite-backed) that records “traces” for search and replay. This is *not yet* the framework’s Event Graph as defined here (it stores a subset of events and does not serve as the canonical append-only interaction ledger).
@@ -89,4 +93,3 @@ Baseline policies (target):
   - nodes can reference others via `parent_event_id` / `causation_id`
 - Context Graph is a set of named dimensions:
   - `profile`, `preferences`, `task_focus`, `summaries`, `capabilities`
-
