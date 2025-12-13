@@ -154,6 +154,11 @@ Trace artifact writer will live in:
 **Objective**
 - Add bounded VDI tasks as tool executors with progress streaming and policy enforcement.
 
+**Current implementation (completed)**
+- Orchestrator planner stub can produce `ActionEnvelope(kind="vdi", name="vdi.browse")` for inputs like `browse https://example.com`.
+- Orchestrator executes VDI actions via `unison-actuation` VDI proxy endpoints (`POST /vdi/tasks/*`) with trace + Event Graph recording.
+- Orchestrator emits progress updates to renderer as `outcome.reflected` (start/end) and the renderer now renders `actuation` telemetry envelopes.
+
 ### Phase 6 — Performance/latency optimization
 
 **Objective**
