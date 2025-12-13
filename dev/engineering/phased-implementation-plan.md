@@ -144,6 +144,11 @@ Trace artifact writer will live in:
 - Add speech→InputEvent mapping and trace propagation.
 - Stream partial outputs to renderer (SSE) with trace events for first-token/first-feedback.
 
+**Current implementation (completed)**
+- `unison-orchestrator`: `POST /input` accepts `InputEventEnvelope` and runs the same pipeline as the thin slice, emitting early `intent.recognized` before `rom.render` (trace span `first_feedback_emitted`).
+- `unison-io-speech`: WebSocket streaming sessions now attach a `trace_id`, stream partial transcript envelopes to the renderer (`POST /events`), and forward final transcripts to orchestrator `POST /input` with trace propagation.
+- `unison-devstack`: shared `UNISON_SERVICE_SECRET` configured for orchestrator + io-speech for internal auth, and `io-speech` gets orchestrator/renderer URLs for forwarding.
+
 ### Phase 5 — VDI agent integration (bounded tasks, streaming)
 
 **Objective**
