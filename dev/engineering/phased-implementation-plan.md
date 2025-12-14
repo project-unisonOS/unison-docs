@@ -164,6 +164,25 @@ Trace artifact writer will live in:
 **Objective**
 - Improve time-to-first-feedback and overall throughput (warm starts, caching, streaming ROM).
 
+**Work items**
+- Reorder the pipeline to emit **first feedback** before expensive reads (context, inference/tooling).
+- Reuse HTTP clients for service-to-service calls (reduce connection setup overhead).
+- Add small, bounded caches for frequently-read context (profile/preferences) and context snapshots used by planning.
+- Add optional **streaming ROM** updates (early “partial” render before the final render).
+
+**Acceptance criteria**
+- Trace shows `first_feedback_emitted` occurs before `context_read_started` when a renderer is configured.
+- When `UNISON_STREAM_ROM=true`, trace includes a `rom_partial_emitted` span and the renderer receives an early `rom.render` with `meta.partial=true`.
+- Service-to-service HTTP calls no longer create a new connection per request in the hot path (client reuse enabled).
+
+**Current implementation (completed)**
+- `unison-orchestrator`: renderer emission is prepared early and `intent.recognized` is emitted before context reads (`orchestrator.interaction.input_runner`).
+- `unison-orchestrator`: optional partial ROM streaming implemented (env `UNISON_STREAM_ROM=true`).
+- `unison-orchestrator`: `ContextSnapshot` caching added (env `UNISON_CONTEXT_SNAPSHOT_CACHE_TTL_MS`).
+- `unison-common`: pooled sync HTTP client reuse for `http_*_with_retry` (env `UNISON_HTTP_CLIENT_POOL=true` by default).
+- `unison-experience-renderer`: lightweight cached context profile reads for `/wakeword` and `/preferences` (env `RENDERER_CONTEXT_PROFILE_CACHE_SECONDS`).
+- `unison-devstack`: enables `UNISON_STREAM_ROM` and `UNISON_CONTEXT_SNAPSHOT_CACHE_TTL_MS` by default for local dev.
+
 ### Phase 7 — Hardening (security, privacy, regression tests)
 
 **Objective**
