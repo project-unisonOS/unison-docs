@@ -188,6 +188,25 @@ Trace artifact writer will live in:
 **Objective**
 - Add redaction, data boundaries, policy regression suites, and security tests.
 
+**Work items**
+- Ensure trace artifacts, Event Graph, and renderer ingestion apply consistent best-effort redaction (tokens/emails/secrets).
+- Add size limits on renderer ingestion for accidental large payloads.
+- Add regression tests covering redaction behavior across persistence boundaries.
+- Provide local tooling for in-place scrubbing and age-based pruning of on-disk artifacts.
+
+**Acceptance criteria**
+- Sensitive fields (`authorization`, `token`, `api_key`, etc.) are stored as `[REDACTED]` in trace artifacts, Event Graph, and renderer event storage by default (configurable).
+- Renderer rejects oversized envelopes when `UNISON_RENDERER_MAX_ENVELOPE_BYTES` is set.
+- Redaction behavior is covered by unit tests in `unison-common`, `unison-orchestrator`, and `unison-experience-renderer`.
+- Operators have scripts to scrub and prune artifacts locally.
+
+**Current implementation (completed)**
+- `unison-common`: `unison_common/redaction.py` + tests; trace artifacts redact on write by default (`UNISON_REDACT_TRACE_ARTIFACTS=true`).
+- `unison-orchestrator`: Event Graph JSONL redaction on append by default (`UNISON_REDACT_EVENT_GRAPH=true`) + regression test.
+- `unison-experience-renderer`: event ingestion redaction enabled by default (`UNISON_REDACT_RENDERER_EVENTS=true`) + regression test; optional max envelope bytes.
+- `unison-workspace`: privacy tools added under `tools/privacy/` for scrubbing and pruning artifacts.
+- `unison-devstack`: defaults enable redaction + renderer envelope size cap for local.
+
 ## File-level targets (Phase 0/1)
 
 Phase 0 (PR0.*):
