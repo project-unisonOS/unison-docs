@@ -9,9 +9,9 @@ This directory is the internal, developer-facing source of truth for:
 - Hot reload behavior
 
 ## Quick Links
+- Default system prompt: `unison-docs/docs/internal/prompt-system/default-system-prompt.md`
 - Architecture: `unison-docs/docs/internal/prompt-system/architecture.md`
 - Lifecycle: `unison-docs/docs/internal/prompt-system/lifecycle.md`
 - Update flow: `unison-docs/docs/internal/prompt-system/update-flow.md`
 - Schemas: `unison-docs/docs/internal/prompt-system/schemas.md`
 - Threats & mitigations: `unison-docs/docs/internal/prompt-system/security.md`
-
