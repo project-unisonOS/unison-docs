@@ -32,7 +32,7 @@ Each alpha GitHub Release MUST include:
 
 - WSL2 package: `unisonos-wsl2-v0.5.0-alpha.N.zip` (or `.tar.gz`)
 - Linux VM image: `unisonos-linux-vm-v0.5.0-alpha.N.qcow2` (and/or `.vmdk` if produced)
-- Bare-metal ISO: `unisonos-baremetal-v0.5.0-alpha.N.iso`
+- Bare-metal ISO: `unisonos-baremetal-v0.5.0-alpha.N.iso.part00` (and subsequent `part*`, plus `...REASSEMBLE.txt`)
 - Bill of materials: `unisonos-manifest-v0.5.0-alpha.N.json`
 - Checksums: `SHA256SUMS-v0.5.0-alpha.N.txt`
 - (Optional but recommended) Signature file(s) for the checksum file (e.g., `*.sig`)

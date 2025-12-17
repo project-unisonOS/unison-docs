@@ -13,12 +13,15 @@ Target: dedicated hardware using the `v0.5.0-alpha.N` **bootable installer ISO**
 ## Download
 
 From the GitHub Release `v0.5.0-alpha.N`:
-- `unisonos-baremetal-v0.5.0-alpha.N.iso`
+- `unisonos-baremetal-v0.5.0-alpha.N.iso.part00` (and subsequent `part*`)
+- `unisonos-baremetal-v0.5.0-alpha.N.iso.REASSEMBLE.txt`
 - `SHA256SUMS-v0.5.0-alpha.N.txt` (verify download)
 
 ## Install
 
-1. Flash the ISO to USB.
+1. Reassemble the ISO:
+   - `cat unisonos-baremetal-v0.5.0-alpha.N.iso.part* > unisonos-baremetal-v0.5.0-alpha.N.iso`
+2. Flash the ISO to USB.
 2. Boot the target machine from USB.
 3. Autoinstall runs unattended; wait for install + reboot.
 4. After reboot, UnisonOS stack should auto-start (may take a few minutes on first boot).
