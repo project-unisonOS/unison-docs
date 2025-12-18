@@ -5,6 +5,7 @@ Single view of the Unison workspace. Repos live side-by-side in this directory; 
 | Repo | Purpose | Status | Language / Framework | Entrypoints / Docs / Tests |
 | ---- | ------- | ------ | -------------------- | -------------------------- |
 | `unison-orchestrator` | Central intent router and policy-aware coordinator for all modules. | Core (active) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |
+| `unison-capability` | Capability discovery, resolution, installation, execution, and manifest persistence (planner-facing resolver). | Core (new) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |
 | `unison-context` | Profile + KV context store with consent-aware access. | Core (active) | Python / FastAPI | `src/context_service.py`; README; tests via `python -m pytest`. |
 | `unison-storage` | Encrypted working/long-term storage and vault. | Core (active) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |
 | `unison-policy` | Safety/consent policy engine and audit log. | Core (active) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |

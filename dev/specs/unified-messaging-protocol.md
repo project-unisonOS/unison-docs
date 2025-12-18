@@ -18,12 +18,9 @@ The Unified Messaging Protocol (UMP) is a core component of Unison's intent orch
 
 - Normalized message shape (channel-agnostic):
   - `channel`, `participants[] {address, role}`, `subject`, `body`, `thread_id`, `message_id`, `context_tags`, `metadata`.
-- Initial HTTP surface (edge-first) provided by the `unison-comms` service:
-  - `POST /comms/check` — fetch and triage new/unread messages, return normalized messages + dashboard cards.
-  - `POST /comms/summarize` — summarize messages for a window/topic, return summary text + cards.
-  - `POST /comms/reply` — send a reply given `thread_id`/`message_id` and reply body.
-  - `POST /comms/compose` — send a new message with recipients, subject, body, and channel.
-- Connectors/adapters run locally; tokens and provider details remain on-device.
+- Comms actions are exposed by `unison-comms`, but **planners MUST execute them via the Capability Resolver** (`unison-capability`) as manifest-declared capabilities (planner contract).
+  - `unison-comms` may retain a legacy HTTP surface (`/comms/*`) for compatibility, but direct planner → comms execution is not the target architecture.
+  - Connectors/adapters remain edge-first; secrets are stored outside manifests and referenced by handles.
 
 ## Core Concepts
 

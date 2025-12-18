@@ -6,6 +6,7 @@ Detailed view of the control plane, experience surfaces, data stores, and runtim
 ## Control plane
 - **unison-intent-graph** — Normalizes user intents (from renderer, shell, VDI, or device I/O), performs light routing, and feeds the orchestrator.
 - **unison-orchestrator** — Central planner: enforces auth/consent, orchestrates skills, calls inference, and manages conversational/task state.
+- **unison-capability** — Capability resolver: discovers, installs, validates manifests, executes tools (local/MCP/A2A), and persists capability manifests.
 - **unison-policy** / **unison-consent** — Safety and consent enforcement; audit and policy evaluation.
 - **unison-auth** — Issues/validates JWTs for service-to-service and user-bound flows.
 - **unison-inference** — Gateway to LLMs/model providers; invoked by orchestrator/intent-graph for generation and planning.
