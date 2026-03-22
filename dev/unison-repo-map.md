@@ -6,9 +6,9 @@ Single view of the Unison workspace. Repos live side-by-side in this directory; 
 | ---- | ------- | ------ | -------------------- | -------------------------- |
 | `unison-orchestrator` | Central intent router and policy-aware coordinator for all modules. | Core (active) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |
 | `unison-capability` | Capability discovery, resolution, installation, execution, and manifest persistence (planner-facing resolver). | Core (new) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |
-| `unison-context` | Profile + KV context store with consent-aware access. | Core (active) | Python / FastAPI | `src/context_service.py`; README; tests via `python -m pytest`. |
+| `unison-context` | Profile, dashboard, conversation, and KV context store with optional consent-aware access. | Core (active) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |
 | `unison-storage` | Encrypted working/long-term storage and vault. | Core (active) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |
-| `unison-policy` | Safety/consent policy engine and audit log. | Core (active) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |
+| `unison-policy` | Safety policy, grants, signed bundles, and rule-management service. | Core (active) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |
 | `unison-auth` | Authentication + RBAC + token issuance for services. | Core (active) | Python / FastAPI | `src/auth_service.py`; README; tests via `python -m pytest`. |
 | `unison-consent` | Dedicated consent grant issuance/introspection service. | Core (active) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |
 | `unison-inference` | LLM/inference gateway supporting OpenAI/Ollama/Azure. | Core (active) | Python / FastAPI | `src/server.py`; README; tests via `python -m pytest`. |
