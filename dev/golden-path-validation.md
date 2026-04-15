@@ -101,6 +101,19 @@ Script:
 Purpose:
 - service wiring and integration plumbing
 
+### Journey 6 fake-mail validation
+Script:
+- `unison-devstack/scripts/validate_journey6_fake_mail.py`
+
+Purpose:
+- exercise the bounded `unison-comms` email path without external credentials
+- validate check, summarize, compose, and re-check behavior against the local stubbed mail path
+
+Optional env:
+- `UNISON_COMMS_URL`
+- `UNISON_BEARER_TOKEN`
+- `UNISON_PERSON_ID`
+
 ### Journey 6 bounded Gmail validation
 Script:
 - `unison-devstack/scripts/validate_journey6_comms.py`
@@ -153,7 +166,8 @@ This local golden-path validation does not by itself prove:
 
 The canonical workspace golden-path validator still does not directly execute the new `unison-comms` Gmail onboarding path.
 
-A dedicated bounded validator now exists for that path:
+Dedicated bounded validators now exist for Journey 6:
+- `unison-devstack/scripts/validate_journey6_fake_mail.py`
 - `unison-devstack/scripts/validate_journey6_comms.py`
 
 That pushed bounded path now includes:
@@ -207,3 +221,17 @@ python unison-devstack/scripts/validate_golden_path.py
 ```
 
 Use this sequence when assessing whether the workspace currently supports the intended development golden path.
+
+For Journey 6 specifically:
+
+```bash
+python unison-devstack/scripts/validate_journey6_fake_mail.py
+```
+
+And when real Gmail test credentials are available:
+
+```bash
+export UNISON_TEST_GMAIL_USERNAME=<gmail-address>
+export UNISON_TEST_GMAIL_APP_PASSWORD=<app-password>
+python unison-devstack/scripts/validate_journey6_comms.py
+```
