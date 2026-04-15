@@ -100,6 +100,10 @@ Script:
 
 Purpose:
 - service wiring and integration plumbing
+- includes an optional bounded Journey 6 Gmail path when explicit test credentials are supplied via:
+  - `UNISON_TEST_GMAIL_USERNAME`
+  - `UNISON_TEST_GMAIL_APP_PASSWORD`
+  - optionally `UNISON_COMMS_URL` and `UNISON_BEARER_TOKEN`
 
 ### Multimodal validation
 Script:
