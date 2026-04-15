@@ -102,7 +102,15 @@ python src/main.py
 
 - Python services: `PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 OTEL_SDK_DISABLED=true python -m pytest`
 - Devstack smoke (requires compose running): `python scripts/e2e_smoke.py`
+- Multimodal validation: `python scripts/test_multimodal.py`
+- Renderer-led golden-path validation: `python scripts/validate_golden_path.py`
 - Docs lint: `npx --yes markdownlint-cli2` (uses workspace config at `.markdownlint-cli2.jsonc`)
+
+Validation note:
+- `e2e_smoke.py` validates service wiring and core integration plumbing
+- `test_multimodal.py` validates speech and vision paths
+- `validate_golden_path.py` validates the current renderer-led product-path contract
+- see `dev/golden-path-validation.md`
 
 ## Repo Roles and Releases
 - Where to work (dev vs platform vs services): `dev/unison-repo-roles.md`
