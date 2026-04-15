@@ -116,12 +116,38 @@ This local golden-path validation does not by itself prove:
 
 Those remain broader Milestone 1 and platform-level concerns.
 
+## Auth-Aware Validation
+
+Some runtime paths enforce orchestrator authentication even when the workspace devstack examples do not.
+
+When validating against an auth-enforcing runtime, provide a bearer token:
+
+```bash
+export UNISON_BEARER_TOKEN=<access-token>
+```
+
+Both of these validators honor that variable:
+- `unison-devstack/scripts/test_multimodal.py`
+- `unison-devstack/scripts/validate_golden_path.py`
+
+This allows the same validation scripts to work in both:
+- permissive local devstack mode
+- stricter authenticated runtime mode
+
 ## Recommended Local Validation Sequence
 
 With the local stack running:
 
 ```bash
 python unison-devstack/scripts/e2e_smoke.py
+python unison-devstack/scripts/test_multimodal.py
+python unison-devstack/scripts/validate_golden_path.py
+```
+
+If the runtime enforces auth on orchestrator event paths:
+
+```bash
+export UNISON_BEARER_TOKEN=<access-token>
 python unison-devstack/scripts/test_multimodal.py
 python unison-devstack/scripts/validate_golden_path.py
 ```
