@@ -3,8 +3,8 @@
 Use this guide to choose the right repository for your task and to understand how the repos fit together.
 
 ## Top-Level Entry Points
-- **unison-workspace** – Meta “front door” for developers. Holds git submodules for core services, `unison-devstack`, `unison-docs`, renderer/VDI, and optional services. Start here to clone and bootstrap everything at once.
-- **unison-devstack** – Canonical Docker Compose for development and local integration tests. Provides smoke and multimodal tests; used by workspace scripts.
+- **unison-workspace** – Meta “front door” for developers. Holds git submodules for a large portion of the current core services, `unison-devstack`, `unison-docs`, renderer/VDI, and optional services. Start here first, but note that it does not yet include every repo referenced across the broader platform and release documentation.
+- **unison-devstack** – Canonical Docker Compose for development and local integration tests. Provides smoke and multimodal tests; used by workspace scripts. It currently references some services whose repos are not present as `unison-workspace` submodules.
 - **unison-platform** – Productized platform distribution. Hosts deployment wiring (Compose for prod), native/installer scripts, and image builders (WSL, VM, ISO). Release tags and compatibility matrices anchor here.
 - **unison-os** – Base Ubuntu LTS container image used by service Dockerfiles (non-root, minimal packages).
 - **unison-docs** – Canonical architecture, specs, compatibility matrix, developer and hardware guides.
@@ -14,12 +14,17 @@ Use this guide to choose the right repository for your task and to understand ho
 - **Control plane**: `unison-orchestrator`, `unison-intent-graph`, `unison-context`, `unison-context-graph`, `unison-policy`, `unison-auth`, `unison-consent`.
 - **Inference**: `unison-inference`.
 - **Experience**: `unison-experience-renderer`, `unison-agent-vdi`.
-- **I/O services**: `unison-io-core`, `unison-io-speech`, `unison-io-vision`, plus modality adapters (BCI, Braille, Sign).
+- **I/O services**: `unison-io-core`, `unison-io-speech`, `unison-io-vision`, plus modality adapters such as BCI, Braille, and Sign.
 - **Comms/actuation**: `unison-comms`, `unison-actuation`.
 - **Shared**: `unison-common`.
 
+Current workspace-boundary note:
+- not every repo named above is included as a submodule in the current `unison-workspace` snapshot
+- `unison-intent-graph` should currently be treated as early
+- `unison-context-graph` should currently be treated as status-ambiguous until its active-vs-reference role is clarified
+
 ## Start Here Based on Your Goal
-- **“I want to test Unison locally.”** Clone `unison-workspace`, initialize submodules, and run `unison-devstack` via workspace scripts (`./scripts/up.sh`, `./scripts/smoke.sh`). Docs: `unison-docs/dev/developer-guide.md`.
+- **“I want to test Unison locally.”** Clone `unison-workspace`, initialize submodules, and run `unison-devstack` via workspace scripts (`./scripts/up.sh`, `./scripts/smoke.sh`). Before assuming the whole documented stack is available from that checkout alone, confirm whether your target path depends on repos that are currently external to the workspace snapshot. Docs: `unison-docs/dev/developer-guide.md`.
 - **“I want to tweak the experience renderer.”** Work in `unison-experience-renderer` (or `unison-agent-vdi`), then validate through `unison-devstack`.
 - **“I want to modify inference logic/models.”** Work in `unison-inference` (provider logic, model selection), then run through `unison-devstack`; update platform manifests when tagging releases.
 - **“I want to work on deployment/images/installers.”** Use `unison-platform`:
