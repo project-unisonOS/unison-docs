@@ -100,10 +100,26 @@ Script:
 
 Purpose:
 - service wiring and integration plumbing
-- includes an optional bounded Journey 6 Gmail path when explicit test credentials are supplied via:
-  - `UNISON_TEST_GMAIL_USERNAME`
-  - `UNISON_TEST_GMAIL_APP_PASSWORD`
-  - optionally `UNISON_COMMS_URL` and `UNISON_BEARER_TOKEN`
+
+### Journey 6 bounded Gmail validation
+Script:
+- `unison-devstack/scripts/validate_journey6_comms.py`
+
+Purpose:
+- exercise the bounded `unison-comms` Gmail onboarding path directly
+- bootstrap local Gmail credentials for test use
+- verify the Gmail path
+- summarize current Gmail state/messages
+- reset bootstrap-backed state
+
+Required env for execution:
+- `UNISON_TEST_GMAIL_USERNAME`
+- `UNISON_TEST_GMAIL_APP_PASSWORD`
+
+Optional env:
+- `UNISON_COMMS_URL`
+- `UNISON_BEARER_TOKEN`
+- `UNISON_PERSON_ID`
 
 ### Multimodal validation
 Script:
@@ -135,7 +151,10 @@ This local golden-path validation does not by itself prove:
 
 ## Journey 6 Boundary Note
 
-The current workspace golden path still does not directly execute the new `unison-comms` Gmail onboarding path.
+The canonical workspace golden-path validator still does not directly execute the new `unison-comms` Gmail onboarding path.
+
+A dedicated bounded validator now exists for that path:
+- `unison-devstack/scripts/validate_journey6_comms.py`
 
 That pushed bounded path now includes:
 - `GET /comms/onboarding/email`
