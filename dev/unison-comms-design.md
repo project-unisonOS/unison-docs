@@ -108,6 +108,11 @@ Examples:
 - `comms.compose`
   - Companion helps draft the message body and subject.
   - For the current bounded Gmail-first Milestone 1 path, the orchestrator-side contract should also support a draft-oriented result before any send boundary.
+  - The current bounded `unison-comms` slice now exposes Gmail draft-first compose behavior plus onboarding/readiness endpoints:
+    - `GET /comms/onboarding/email`
+    - `POST /comms/onboarding/email/verify`
+    - `POST /comms/onboarding/email/reset`
+    - `GET /comms/onboarding/email/oauth`
   - A normalized draft-shaped result may include fields like:
     - `status: "draft"`
     - `provider: "gmail"`
