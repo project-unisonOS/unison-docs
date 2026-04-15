@@ -110,7 +110,7 @@ Purpose:
 - validate check, summarize, compose, and re-check behavior against the local stubbed mail path
 
 Optional env:
-- `UNISON_COMMS_URL`
+- `UNISON_COMMS_URL` (defaults to `http://localhost:8088` in devstack)
 - `UNISON_BEARER_TOKEN`
 - `UNISON_PERSON_ID`
 
@@ -130,7 +130,7 @@ Required env for execution:
 - `UNISON_TEST_GMAIL_APP_PASSWORD`
 
 Optional env:
-- `UNISON_COMMS_URL`
+- `UNISON_COMMS_URL` (defaults to `http://localhost:8088` in devstack)
 - `UNISON_BEARER_TOKEN`
 - `UNISON_PERSON_ID`
 
