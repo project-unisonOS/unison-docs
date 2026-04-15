@@ -55,7 +55,10 @@
 ### unison-actuation (new/updated)
 - `POST /vdi/tasks/browse` → proxy to agent-vdi browse; request `{person_id, session_id?, url, headers?, wait_for?, telemetry_channel?, risk_level}`; response `{status, action_id, result, file_ids?, exit_ip?, audit_ref}`.
 - `POST /vdi/tasks/form-submit` → `{person_id, url, form: [{selector, value, type?}], submit_selector?, wait_for?}`.
-- `POST /vdi/tasks/download` → `{person_id, url, cookies_ref?, headers?, target_path?}` returns storage `file_id`.
+- `POST /vdi/tasks/download` → bounded download contract:
+  - request: `{person_id, session_id?, url, headers?, filename?, target_path?, risk_level?}`
+  - success response includes bounded result fields such as `{status, file_ids, artifacts?, telemetry?, exit_ip?}`
+  - downstream allowlist/policy denial should remain explicit, for example a non-2xx result with a bounded body like `{status: "failed", detail: "domain not allowed"}`
 - `GET /vdi/sessions/{id}` → status/telemetry (optional future).
 
 ### unison-agent-vdi (internal)
