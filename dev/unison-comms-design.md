@@ -107,8 +107,13 @@ Examples:
   - Updates dashboard cards and trace logs.
 - `comms.compose`
   - Companion helps draft the message body and subject.
-  - Email adapter sends via Gmail/IMAP/Graph.
-  - Produces a “sent” card with appropriate tags.
+  - For the current bounded Gmail-first Milestone 1 path, the orchestrator-side contract should also support a draft-oriented result before any send boundary.
+  - A normalized draft-shaped result may include fields like:
+    - `status: "draft"`
+    - `provider: "gmail"`
+    - `draft: {thread_id?, message_id?, subject, body, to}`
+    - `cards: [{type: "comms.draft", ...}]`
+  - Email adapter sends via Gmail/IMAP/Graph only after an explicit confirmation boundary outside this draft contract.
 
 ### 3.3 Dashboard and tags
 
