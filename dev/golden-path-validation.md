@@ -129,6 +129,22 @@ This local golden-path validation does not by itself prove:
 - connector completeness
 - full renderer doctrine fidelity
 
+## Journey 6 Boundary Note
+
+The current workspace golden path still does not directly execute the new `unison-comms` Gmail onboarding path.
+
+That pushed bounded path now includes:
+- `GET /comms/onboarding/email`
+- `POST /comms/onboarding/email/bootstrap`
+- `POST /comms/onboarding/email/verify`
+- `POST /comms/onboarding/email/reset`
+- `GET /comms/onboarding/email/oauth`
+- draft-first compose behavior
+- adapter-backed summarize behavior
+- provider-aware empty/message state shaping
+
+These are useful repo-local and service-surface anchors, but they are not yet part of the canonical workspace golden-path validator sequence.
+
 Those remain broader Milestone 1 and platform-level concerns.
 
 ## Auth-Aware Validation
