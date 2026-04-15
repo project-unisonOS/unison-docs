@@ -77,6 +77,21 @@ Meaning:
 
 ## Validation Layers
 
+### Repo-local regression anchors
+
+The current golden path is also backed by focused repo-local tests:
+
+- `unison-orchestrator/tests/test_startup_status.py`
+- `unison-orchestrator/tests/test_startup_status_ready.py`
+- `unison-orchestrator/tests/test_dashboard_refresh.py`
+- `unison-orchestrator/tests/test_voice_ingest.py`
+- `unison-experience-renderer/tests/test_startup_status_endpoint.py`
+- `unison-experience-renderer/tests/test_onboarding_endpoint.py`
+- `unison-experience-renderer/tests/test_onboarding_ready.py`
+- `unison-context/tests/test_dashboard.py`
+
+These do not replace integration or platform validation, but they lock the current golden-path contract at the service boundary level.
+
 These checks are complementary and should not be conflated.
 
 ### Devstack smoke
