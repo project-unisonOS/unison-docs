@@ -17,9 +17,10 @@ This describes how UnisonOS repos align around a trunk-based workflow, semver, a
 - Tags: `vX.Y.Z` on `unison-platform` and participating services.
 - GitHub Releases (in `unison-platform`):
   - Release notes,
+  - assets for the canonical supported install path,
   - Compose bundles,
   - Installer scripts (installer/),
-  - Images (WSL/VM/ISO) from `images/`,
+  - evaluator images (WSL/VM/ISO) from `images/` when published,
   - Checksums and signatures (where available).
 - Channels:
   - Nightly: `main` → GHCR tags `edge-main-YYYYMMDD`.
@@ -34,7 +35,7 @@ This describes how UnisonOS repos align around a trunk-based workflow, semver, a
 - On push to `main`: push `:edge-main` (or date-stamped) images.
 - On tag `vX.Y.Z`: push `:vX.Y.Z` and, for platform, `:latest`.
 - Service repos should reuse `project-unisonOS/unison-platform/.github/workflows/reusable-build.yml@main` for consistent channel-aware tags (edge/beta/stable) and OCI labels.
-- Platform release workflow (`unison-platform/.github/workflows/release.yml`) packages WSL/VM/ISO artifacts and attaches them to GitHub Releases on `v*` tags.
+- Platform release workflow (`unison-platform/.github/workflows/release.yml`) publishes assets for the supported install path and may also package WSL/VM/ISO evaluator artifacts on `v*` tags.
 
 ## Contributor Workflow
 - External contributions:

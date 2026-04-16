@@ -2,13 +2,20 @@
 
 This page is the fastest path to evaluating UnisonOS `v0.5.0-alpha.N` as a developer.
 
+Important Milestone 1 framing:
+- the supported production-track installation route is Ubuntu 24.04 native on x86_64
+- this page describes evaluation-only artifact channels
+- if you want the supported install path, start with the Ubuntu native install docs in `unison-platform/docs/deployment/ubuntu-native.md`
+
 ## What “Alpha” means
 
 - Expect rough edges: defaults and packaging may change between alpha drops.
 - We prioritize “installable + boots + end-to-end interaction works” over completeness.
 - File issues aggressively; alpha is for learning quickly.
 
-## Which artifact should you choose?
+## Which evaluation artifact should you choose?
+
+Use these only when you explicitly want an evaluation channel rather than the primary supported install route.
 
 - **WSL2**: fastest start for Windows developers (recommended if you already use Docker Desktop + WSL2).
 - **Linux VM**: isolated environment; good for demos and evaluation without touching host OS.
@@ -16,10 +23,12 @@ This page is the fastest path to evaluating UnisonOS `v0.5.0-alpha.N` as a devel
 
 ## Downloads
 
-All artifacts live on the GitHub Release for `v0.5.0-alpha.N`:
+Evaluation artifacts live on the GitHub Release for `v0.5.0-alpha.N`:
 `https://github.com/project-unisonOS/unison-platform/releases/tag/v0.5.0-alpha.N`
 
-Required assets:
+If you want the supported Milestone 1 install route, use the Ubuntu native installation path instead of choosing one of these artifacts.
+
+Typical evaluation assets:
 - `unisonos-wsl2-v0.5.0-alpha.N.zip` (or `.tar.gz`)
 - `unisonos-linux-vm-v0.5.0-alpha.N.qcow2` (and/or `.vmdk`)
 - `unisonos-baremetal-v0.5.0-alpha.N.iso.part00` (and subsequent `part*`, plus `...REASSEMBLE.txt`)
@@ -28,7 +37,7 @@ Required assets:
 
 ## 10-minute “first interaction” walkthrough
 
-1. Install one target (pick one):
+1. Install one evaluation target (pick one):
    - WSL2: `dev/deployment/install-wsl2.md`
    - Linux VM: `dev/deployment/install-linux-vm.md`
    - Bare metal: `dev/deployment/install-bare-metal.md`

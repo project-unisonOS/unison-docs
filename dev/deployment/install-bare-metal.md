@@ -1,5 +1,9 @@
 # Install UnisonOS Alpha on Bare Metal
 
+Evaluation-only note:
+- for the current Milestone 1 production-track release, the supported installation route is Ubuntu 24.04 native on x86_64
+- this bare-metal ISO path remains useful for evaluation and hardware exploration, but it is not the canonical supported install route
+
 Target: dedicated hardware using the `v0.5.0-alpha.N` **bootable installer ISO** (full Ubuntu installer with embedded autoinstall).
 
 ## Prereqs

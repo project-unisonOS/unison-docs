@@ -1,5 +1,9 @@
 # Install UnisonOS Alpha on WSL2
 
+Evaluation-only note:
+- for the current Milestone 1 production-track release, the supported installation route is Ubuntu 24.04 native on x86_64
+- this WSL2 path remains useful for developer evaluation, but it is not the canonical supported install route
+
 Target: Windows + WSL2 using the `v0.5.0-alpha.N` WSL2 release artifact.
 
 ## Prereqs

@@ -1,5 +1,9 @@
 # Install UnisonOS Alpha as a Linux VM
 
+Evaluation-only note:
+- for the current Milestone 1 production-track release, the supported installation route is Ubuntu 24.04 native on x86_64
+- this Linux VM path remains useful for demos and evaluation, but it is not the canonical supported install route
+
 Target: a local VM using the `v0.5.0-alpha.N` VM disk image artifact (bootable Ubuntu + UnisonOS preinstalled).
 
 ## Prereqs
