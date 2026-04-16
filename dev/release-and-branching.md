@@ -18,8 +18,7 @@ This describes how UnisonOS repos align around a trunk-based workflow, semver, a
 - GitHub Releases (in `unison-platform`):
   - Release notes,
   - assets for the canonical supported install path,
-  - Compose bundles,
-  - Installer scripts (installer/),
+  - the native installer/runtime contract (`install-native.sh`, `unisonctl`, `.env.native.template`, `compose/compose.native.yaml`),
   - evaluator images (WSL/VM/ISO) from `images/` when published,
   - Checksums and signatures (where available).
 - Channels:

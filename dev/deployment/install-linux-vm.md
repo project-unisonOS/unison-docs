@@ -2,6 +2,7 @@
 
 Evaluation-only note:
 - for the current Milestone 1 production-track release, the supported installation route is Ubuntu 24.04 native on x86_64
+- the canonical native route is defined in `unison-platform` by `install-native.sh`, `unisonctl`, `.env.native.template`, and `compose/compose.native.yaml`
 - this Linux VM path remains useful for demos and evaluation, but it is not the canonical supported install route
 
 Target: a local VM using the `v0.5.0-alpha.N` VM disk image artifact (bootable Ubuntu + UnisonOS preinstalled).

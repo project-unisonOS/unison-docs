@@ -37,6 +37,7 @@ Each `v0.5.0-alpha.N` release MUST satisfy:
 Each alpha GitHub Release MUST include enough assets to support the canonical Milestone 1 install path:
 
 - native installer documentation and/or installer bundle for the Ubuntu native route
+- the native runtime contract in `unison-platform` (`install-native.sh`, `unisonctl`, `.env.native.template`, `compose/compose.native.yaml`)
 - Bill of materials: `unisonos-manifest-v0.5.0-alpha.N.json`
 - Checksums: `SHA256SUMS-v0.5.0-alpha.N.txt`
 - (Optional but recommended) Signature file(s) for the checksum file (e.g., `*.sig`)
